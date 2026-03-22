@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Urbanpots — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--dark-sage:#4A5C40;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--gold:#B8942C;--light-sage:#B8C8A8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ivory);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--terracotta);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(244,239,230,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.12);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--terracotta);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:var(--mid);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--terracotta);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(244,239,230,0.98);backdrop-filter:blur(16px);border:1px solid rgba(168,88,64,0.1);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(--terracotta);}
+    .nav-cta{border:1px solid var(--terracotta) !important;color:var(--terracotta) !important;}
+    .nav-cta:hover{background:var(--terracotta) !important;color:#fff !important;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:4.5rem;}
+    .hero-left{background:var(--ink);padding:6rem 4rem;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-eyebrow{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(244,239,230,0.35);margin-bottom:3rem;}
+    .hero-brand{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;color:var(--ivory);line-height:0.95;margin-bottom:2rem;}
+    .hero-brand em{font-style:italic;color:var(--terracotta);}
+    .hero-tagline{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.45);line-height:1.6;max-width:320px;border-left:2px solid var(--terracotta);padding-left:1.2rem;}
+    .hero-left-bottom{display:flex;gap:2.5rem;}
+    .hero-stat span{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--ivory);display:block;line-height:1;}
+    .hero-stat small{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(244,239,230,0.35);}
+
+    .hero-right{background:var(--rust);padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:2rem;}
+    .hero-right-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ivory);line-height:1.3;margin-bottom:0.5rem;}
+    .hero-right p{font-size:0.88rem;color:rgba(244,239,230,0.6);line-height:1.95;}
+    .hero-right p em{font-style:italic;color:rgba(244,239,230,0.85);}
+
+    /* ORIGIN */
+    .origin{padding:7rem 4rem;background:var(--charcoal);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .origin-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;color:var(--ivory);line-height:1.5;}
+    .origin-quote em{color:var(--terracotta);}
+    .origin-body p{font-size:0.87rem;color:rgba(244,239,230,0.55);line-height:1.95;margin-bottom:1rem;}
+    .origin-body p em{font-style:italic;color:rgba(244,239,230,0.8);}
+    .origin-label{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;}
+    .origin-label::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+
+    /* WHAT WE DO */
+    .what{padding:7rem 4rem;background:var(--ivory);}
+    .what-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem;}
+    .ww{padding:2.5rem 2rem;border-top:3px solid transparent;transition:opacity 0.3s;}
+    .ww:hover{opacity:0.85;}
+    .ww:nth-child(1){background:var(--charcoal);}
+    .ww:nth-child(2){background:var(--sage);}
+    .ww:nth-child(3){background:var(--terracotta);}
+    .ww:nth-child(4){background:var(--rust);}
+    .ww:nth-child(5){background:var(--ink);}
+    .ww:nth-child(6){background:var(--dark-sage);}
+    .ww:nth-child(7){background:var(--gold);}
+    .ww:nth-child(8){background:var(--mid);}
+    .ww:nth-child(9){background:var(--charcoal);}
+    .ww-icon{font-size:1.6rem;margin-bottom:1rem;display:block;}
+    .ww h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivory);margin-bottom:0.6rem;}
+    .ww p{font-size:0.8rem;color:rgba(244,239,230,0.6);line-height:1.85;}
+
+    /* PROJECTS */
+    .projects{padding:7rem 4rem;background:var(--cream);}
+    .proj-types{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem;}
+    .pt{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;}
+    .pt-fill{width:100%;height:100%;transition:transform 0.6s ease;}
+    .pt:hover .pt-fill{transform:scale(1.06);}
+    .pt::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,0.8),transparent 50%);}
+    .pt-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;z-index:10;}
+    .pt-cat{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,239,230,0.5);margin-bottom:0.3rem;}
+    .pt h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ivory);}
+    .pf1{background:url('images/int-residential.jpg') center/cover no-repeat;}
+    .pf2{background:url('images/int-cafe.jpg') center/cover no-repeat;}
+    .pf3{background:url('images/land-garden.jpg') center/cover no-repeat;}
+    .pf4{background:url('images/int-vibe-house.jpg') center/cover no-repeat;}
+
+    /* AMC */
+    .amc{padding:5rem 4rem;background:var(--terracotta);display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+    .amc h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;}
+    .amc h2 em{font-style:italic;opacity:0.7;}
+    .amc p{font-size:0.88rem;color:rgba(255,255,255,0.7);line-height:1.9;}
+    .amc-features{display:flex;flex-direction:column;gap:0.8rem;margin-top:1.5rem;}
+    .amc-f{display:flex;align-items:center;gap:0.8rem;font-size:0.82rem;color:rgba(255,255,255,0.75);}
+    .amc-f::before{content:'✓';color:#fff;font-size:0.75rem;}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;margin-top:2rem;}
+    .btn-dark:hover{background:#000;}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{grid-template-columns:1fr;}.hero-left,.hero-right{padding:4rem 1.5rem;}
+      .origin{grid-template-columns:1fr;padding:4rem 1.5rem;}
+      .what{padding:4rem 1.5rem;}.what-grid{grid-template-columns:1fr 1fr;}
+      .projects{padding:4rem 1.5rem;}.proj-types{grid-template-columns:1fr 1fr;}
+      .amc{grid-template-columns:1fr;padding:4rem 1.5rem;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html" class="active">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <div>
+        <p class="hero-eyebrow">Pondicherry · Est. 2020</p>
+        <h1 class="hero-brand">Urban<em>pots</em></h1>
+        <p class="hero-tagline">A botanical lifestyle brand. A design and execution studio. A living philosophy.</p>
+      </div>
+      <div class="hero-left-bottom">
+        <div class="hero-stat"><span>5+</span><small>Years Active</small></div>
+        <div class="hero-stat"><span>50+</span><small>Projects</small></div>
+        <div class="hero-stat"><span>∞</span><small>Materials</small></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h2 class="hero-right-title">Design, Craft,<br>Sustainability, Space</h2>
+      <p>Urbanpots began as a plant store and became a multi-disciplinary design and execution company — delivering residential, hospitality, and commercial spaces across Pondicherry and South India.</p>
+      <p>The founding philosophy — <em>re-see what already exists</em> — shapes every project. Reclaimed materials, traditional Indian craft, and material-led storytelling are not options at Urbanpots. They are the method.</p>
+    </div>
+  </div>
+
+  <!-- ORIGIN -->
+  <div class="origin">
+    <div>
+      <p class="origin-label">Origin</p>
+      <p class="origin-quote">I wanted a plant store. When no designer could see what I was imagining, I built it myself — and lost half the budget doing it. What came out the other side was <em>a philosophy.</em></p>
+    </div>
+    <div class="origin-body">
+      <p>The Urbanpots store — Vibe House — was the first project. An old house in Pondicherry, converted into a botanical lifestyle space. The budget collapsed halfway through. We couldn't buy decor. So we took the doors off their frames and made them into walls, installations, and display structures.</p>
+      <p>That question — <em>what do we already have?</em> — became the core of everything. Every project since has begun there. Not with a mood board. With the material that already exists.</p>
+    </div>
+  </div>
+
+  <!-- WHAT WE DO -->
+  <div class="what">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>What We Do</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--charcoal);">End-to-end design<br><em>& execution</em></h2>
+    <div class="what-grid">
+      <div class="ww"><span class="ww-icon">🏛️</span><h3>Spatial Design</h3><p>Interior environments — homes, cafés, restaurants, restobars, resorts. Concept-to-completion, material-led, no templates.</p></div>
+      <div class="ww"><span class="ww-icon">🌿</span><h3>Landscape & Outdoor</h3><p>Courtyards, gardens, resort landscapes — designed as living ecosystems, not decorative add-ons.</p></div>
+      <div class="ww"><span class="ww-icon">🪑</span><h3>Custom Furniture</h3><p>Reclaimed and sculptural furniture designed and built in-house. Every piece made once, for its exact context.</p></div>
+      <div class="ww"><span class="ww-icon">💡</span><h3>Lighting Systems</h3><p>Handcrafted lighting in brass, wood, natural fibre, and salvaged materials. Each fixture changes how a space breathes.</p></div>
+      <div class="ww"><span class="ww-icon">🎨</span><h3>Craft Integration</h3><p>Lippan, Warli, Tanjore, Moradabad brass, Dhokra — traditional Indian craft integrated as spatial systems, not decoration.</p></div>
+      <div class="ww"><span class="ww-icon">🪵</span><h3>Material Sourcing</h3><p>Architectural salvage, antique fragments, reclaimed wood, natural stone — sourced, evaluated, and placed with precision.</p></div>
+      <div class="ww"><span class="ww-icon">🏪</span><h3>Retail & Studio</h3><p>Vibe House, Pondicherry — botanical lifestyle retail, design studio, and workshop space. A space you can visit.</p></div>
+      <div class="ww"><span class="ww-icon">🎓</span><h3>Workshops & Events</h3><p>Community design experiences, craft workshops, and curated design events — open to clients, collaborators, and the curious.</p></div>
+      <div class="ww"><span class="ww-icon">🔧</span><h3>AMC Contracts</h3><p>Annual Maintenance Contracts — ensuring every space stays alive, maintained, and cared for long after delivery.</p></div>
+    </div>
+  </div>
+
+  <!-- PROJECT TYPES -->
+  <div class="projects">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>Project Types</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--charcoal);">We work across<br><em>every typology</em></h2>
+    <div class="proj-types">
+      <div class="pt"><div class="pt-fill pf1"></div><div class="pt-info"><p class="pt-cat">Residential</p><h3>Homes & Apartments</h3></div></div>
+      <div class="pt"><div class="pt-fill pf2"></div><div class="pt-info"><p class="pt-cat">Hospitality</p><h3>Cafés, Restaurants & Resorts</h3></div></div>
+      <div class="pt"><div class="pt-fill pf3"></div><div class="pt-info"><p class="pt-cat">Landscape</p><h3>Courtyards & Gardens</h3></div></div>
+      <div class="pt"><div class="pt-fill pf4"></div><div class="pt-info"><p class="pt-cat">Commercial</p><h3>Retail & Studios</h3></div></div>
+    </div>
+  </div>
+
+  <!-- AMC -->
+  <div class="amc">
+    <div>
+      <h2>Annual Maintenance<br><em>Contracts</em></h2>
+      <p>A space doesn't end at handover. Plants need care. Materials need maintenance. Living environments need ongoing attention. Urbanpots AMC contracts ensure every space stays as alive as the day it was completed.</p>
+      <a class="btn-dark" href="contact.html">Enquire About AMC</a>
+    </div>
+    <div>
+      <div class="amc-features">
+        <div class="amc-f">Scheduled maintenance visits</div>
+        <div class="amc-f">Plant care and replacement</div>
+        <div class="amc-f">Material touch-ups and repairs</div>
+        <div class="amc-f">Seasonal updates and refreshes</div>
+        <div class="amc-f">Priority access for new work</div>
+        <div class="amc-f">Emergency response within 48 hours</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+</body>
+</html>

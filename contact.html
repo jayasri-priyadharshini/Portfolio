@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--gold:#B8942C;--light-sage:#B8C8A8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ink);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--ink);}::-webkit-scrollbar-thumb{background:var(--terracotta);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(26,25,20,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.15);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--terracotta);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:rgba(244,239,230,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--ivory);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(26,25,20,0.97);border:1px solid rgba(244,239,230,0.08);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,239,230,0.45);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(--ivory);}
+    .nav-cta{border:1px solid var(--terracotta) !important;color:var(--terracotta) !important;}
+    .nav-cta:hover{background:var(--terracotta) !important;color:#fff !important;}
+
+    /* HERO */
+    .hero{padding:9rem 4rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:end;}
+    .lbl{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.2rem;}
+    .lbl::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,6vw,5.5rem);font-weight:300;color:var(--ivory);line-height:1.05;margin-bottom:1.5rem;}
+    .hero h1 em{font-style:italic;color:var(--terracotta);}
+    .hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.4);line-height:1.65;}
+    .hero-details{display:flex;flex-direction:column;gap:0;}
+    .hd-item{padding:1.5rem 0;border-bottom:1px solid rgba(244,239,230,0.07);}
+    .hd-item:first-child{border-top:1px solid rgba(244,239,230,0.07);}
+    .hd-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.3rem;}
+    .hd-val{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ivory);}
+    .hd-note{font-size:0.72rem;color:rgba(244,239,230,0.3);margin-top:0.2rem;}
+
+    /* MAIN SECTION */
+    .contact-main{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;}
+
+    /* FORM */
+    .form-side{padding:6rem 4rem;background:rgba(244,239,230,0.04);}
+    .form-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ivory);margin-bottom:0.5rem;}
+    .form-title em{font-style:italic;color:var(--terracotta);}
+    .form-desc{font-size:0.82rem;color:rgba(244,239,230,0.4);margin-bottom:3rem;line-height:1.7;}
+    .fg{margin-bottom:1.8rem;}
+    .fl-label{display:block;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,239,230,0.4);margin-bottom:0.6rem;}
+    .fi,.fs,.ft{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(244,239,230,0.15);padding:0.6rem 0;font-family:'DM Sans',sans-serif;font-size:0.88rem;color:var(--ivory);font-weight:300;outline:none;transition:border-color 0.3s;appearance:none;}
+    .fi:focus,.fs:focus,.ft:focus{border-bottom-color:var(--terracotta);}
+    .fi::placeholder,.ft::placeholder{color:rgba(244,239,230,0.2);}
+    .fs option{background:var(--ink);color:var(--ivory);}
+    .ft{resize:none;min-height:90px;line-height:1.7;}
+    .fr{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    .submit-btn{margin-top:2.5rem;width:100%;padding:1rem 2rem;background:var(--terracotta);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:background 0.3s;}
+    .submit-btn:hover{background:var(--rust);}
+    .form-note{font-size:0.68rem;color:rgba(244,239,230,0.25);margin-top:0.8rem;}
+
+    /* INFO SIDE */
+    .info-side{padding:6rem 4rem;background:var(--charcoal);display:flex;flex-direction:column;justify-content:space-between;}
+    .info-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;color:var(--ivory);margin-bottom:2.5rem;}
+    .info-title em{font-style:italic;color:var(--terracotta);}
+    .info-block{margin-bottom:2rem;}
+    .ib-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.4rem;}
+    .ib-val{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ivory);}
+    .ib-note{font-size:0.75rem;color:rgba(244,239,230,0.35);margin-top:0.2rem;}
+    .divider{height:1px;background:rgba(244,239,230,0.08);margin:2rem 0;}
+    .collab-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivory);margin-bottom:1rem;}
+    .collab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+    .collab-item{padding:0.8rem 1rem;background:rgba(244,239,230,0.04);border:1px solid rgba(244,239,230,0.07);font-size:0.75rem;color:rgba(244,239,230,0.5);}
+    .philosophy-note{margin-top:auto;border-left:2px solid var(--terracotta);padding-left:1.2rem;}
+    .philosophy-note p{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:rgba(244,239,230,0.4);line-height:1.65;}
+
+    /* QUICK LINKS */
+    .quick-links{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--ink);}
+    .ql{padding:2.5rem 2rem;background:rgba(244,239,230,0.03);border:1px solid rgba(244,239,230,0.05);text-decoration:none;display:flex;flex-direction:column;gap:0.8rem;transition:background 0.3s;}
+    .ql:hover{background:rgba(244,239,230,0.06);}
+    .ql-icon{font-size:1.4rem;}
+    .ql h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);}
+    .ql p{font-size:0.72rem;color:rgba(244,239,230,0.35);}
+    .ql-arrow{font-size:0.8rem;color:var(--terracotta);margin-top:auto;}
+
+    /* TOAST */
+    .toast{position:fixed;bottom:2rem;right:2rem;background:var(--sage);color:#fff;padding:1rem 1.8rem;font-size:0.8rem;z-index:1000;opacity:0;transform:translateY(8px);transition:all 0.4s;pointer-events:none;}
+    .toast.show{opacity:1;transform:translateY(0);}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,239,230,0.06);}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fll{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
+    .hero>*:nth-child(1){animation-delay:0.1s}.hero>*:nth-child(2){animation-delay:0.3s}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem;}
+      .contact-main{grid-template-columns:1fr;}
+      .form-side,.info-side{padding:4rem 1.5rem;}
+      .fr{grid-template-columns:1fr;}
+      .quick-links{grid-template-columns:repeat(2,1fr);}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <p class="lbl">Contact & Collaborate</p>
+      <h1>Let's build<br>something <em>real.</em></h1>
+      <p class="hero-sub">Every great project begins with a single conversation. Whatever you're working on — reach out.</p>
+    </div>
+    <div class="hero-details">
+      <div class="hd-item"><p class="hd-label">Studio Location</p><p class="hd-val">Pondicherry, India</p><p class="hd-note">Vibe House — Urbanpots Store</p></div>
+      <div class="hd-item"><p class="hd-label">Email</p><p class="hd-val">hello@urbanpots.in</p><p class="hd-note">Response within 24–48 hours</p></div>
+      <div class="hd-item"><p class="hd-label">Phone</p><p class="hd-val">[Your Number Here]</p><p class="hd-note">Mon – Sat · 9am – 7pm IST</p></div>
+      <div class="hd-item"><p class="hd-label">Instagram</p><p class="hd-val">@urbanpots.in</p><p class="hd-note">Work, process, material finds</p></div>
+    </div>
+  </div>
+
+  <div class="contact-main">
+    <div class="form-side">
+      <h2 class="form-title">Send a <em>message</em></h2>
+      <p class="form-desc">Tell me about your project, space, or idea. The more context you share, the more I can understand what you actually need.</p>
+      <form id="contactForm">
+        <div class="fr">
+          <div class="fg"><label class="fl-label" for="name">Name</label><input class="fi" type="text" id="name" placeholder="Your name" required/></div>
+          <div class="fg"><label class="fl-label" for="email">Email</label><input class="fi" type="email" id="email" placeholder="your@email.com" required/></div>
+        </div>
+        <div class="fg"><label class="fl-label" for="interest">What are you looking for?</label>
+          <select class="fs" id="interest">
+            <option value="" disabled selected>Select a service</option>
+            <option>Interior Design</option>
+            <option>Landscape / Courtyard Design</option>
+            <option>Café / Restaurant Design</option>
+            <option>Resort / Homestay Design</option>
+            <option>Custom Furniture</option>
+            <option>Lighting Design</option>
+            <option>Wall Art / Installations</option>
+            <option>Material Sourcing</option>
+            <option>AMC Contract</option>
+            <option>Workshop / Event</option>
+            <option>Collaboration / Partnership</option>
+            <option>Internship</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl-label" for="location">Project Location</label><input class="fi" type="text" id="location" placeholder="Pondicherry, Chennai, Bangalore..."/></div>
+        <div class="fg"><label class="fl-label" for="message">Tell me about your project</label><textarea class="ft" id="message" rows="5" placeholder="Describe the space, your vision, timeline — anything relevant..."></textarea></div>
+        <button class="submit-btn" type="submit">Send Message →</button>
+        <p class="form-note">Your information stays private. No spam, ever.</p>
+      </form>
+    </div>
+
+    <div class="info-side">
+      <div>
+        <h3 class="info-title">What to <em>expect</em></h3>
+        <div class="info-block"><p class="ib-label">First Response</p><p class="ib-val">Within 24–48 hours</p><p class="ib-note">Every message read personally</p></div>
+        <div class="info-block"><p class="ib-label">First Meeting</p><p class="ib-val">Site visit or call</p><p class="ib-note">Understanding before designing</p></div>
+        <div class="info-block"><p class="ib-label">Proposal</p><p class="ib-val">Concept + material direction</p><p class="ib-note">Clear picture before any commitment</p></div>
+        <div class="divider"></div>
+        <h4 class="collab-title">Open to collaborations with</h4>
+        <div class="collab-grid">
+          <div class="collab-item">Architects</div>
+          <div class="collab-item">Interior Designers</div>
+          <div class="collab-item">Artisans & Craftspeople</div>
+          <div class="collab-item">Photographers</div>
+          <div class="collab-item">Botanists</div>
+          <div class="collab-item">Material Researchers</div>
+          <div class="collab-item">Interns & Students</div>
+          <div class="collab-item">Cultural Institutions</div>
+        </div>
+      </div>
+      <div class="philosophy-note">
+        <p>"Every great project begins with listening. Not to what you want it to look like — but to what the space wants to become."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div class="quick-links">
+    <a class="ql" href="portfolio.html"><span class="ql-icon">🏛️</span><h4>Portfolio</h4><p>See completed projects</p><span class="ql-arrow">→</span></a>
+    <a class="ql" href="materials.html"><span class="ql-icon">🪵</span><h4>Material Library</h4><p>Explore the material research</p><span class="ql-arrow">→</span></a>
+    <a class="ql" href="nad.html"><span class="ql-icon">🌱</span><h4>NAD Village</h4><p>The ecosystem vision</p><span class="ql-arrow">→</span></a>
+    <a class="ql" href="services.html"><span class="ql-icon">📋</span><h4>Services</h4><p>Full list of what I offer</p><span class="ql-arrow">→</span></a>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fll">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+
+  <div class="toast" id="toast">✓ Message received — I'll be in touch within 24 hours.</div>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const t=document.getElementById('toast');
+      t.classList.add('show');
+      this.reset();
+      setTimeout(()=>t.classList.remove('show'),4500);
+    });
+  </script>
+</body>
+</html>

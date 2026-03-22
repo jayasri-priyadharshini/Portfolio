@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Material Library — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--gold:#B8942C;--light-sage:#B8C8A8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ink);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--ink);}::-webkit-scrollbar-thumb{background:var(--terracotta);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.6;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(26,25,20,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.15);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--terracotta);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:rgba(244,239,230,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--ivory);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(26,25,20,0.97);backdrop-filter:blur(16px);border:1px solid rgba(244,239,230,0.08);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,239,230,0.45);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(--ivory);}
+    .nav-cta{border:1px solid rgba(168,88,64,0.6) !important;color:var(--terracotta) !important;}
+    .nav-cta:hover{background:var(--terracotta) !important;color:#fff !important;}
+
+    /* HERO */
+    .hero{padding:9rem 4rem 6rem;min-height:70vh;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2A2818 0%,#1A1914 60%,#0E0E0A 100%);}
+    .hero-grid-lines{position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(244,239,230,0.025) 80px,rgba(244,239,230,0.025) 81px),repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(244,239,230,0.025) 80px,rgba(244,239,230,0.025) 81px);}
+    .hero-content{position:relative;z-index:10;}
+    .hero-eyebrow{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,6rem);font-weight:300;line-height:1.02;margin-bottom:2rem;}
+    .hero-title em{font-style:italic;color:var(--terracotta);}
+    .hero-body{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;}
+    .hero-text p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.45);line-height:1.65;max-width:480px;}
+    .hero-nums{display:flex;gap:3rem;}
+    .hnum{text-align:center;}
+    .hnum-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--terracotta);display:block;line-height:1;}
+    .hnum-l{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,239,230,0.35);margin-top:0.3rem;display:block;}
+
+    /* INTRO STATEMENT */
+    .intro-statement{background:var(--terracotta);padding:4rem;}
+    .intro-statement p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-style:italic;color:#fff;line-height:1.55;max-width:900px;}
+
+    /* MATERIAL GRID */
+    .materials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--ink);}
+
+    .mat-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3;}
+    .mat-card-fill{width:100%;height:100%;transition:transform 0.7s ease;}
+    .mat-card:hover .mat-card-fill{transform:scale(1.06);}
+    .mat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(26,25,20,0.85) 0%,rgba(26,25,20,0.2) 50%,transparent 100%);}
+    .mat-card-content{position:absolute;bottom:0;left:0;right:0;padding:2rem;z-index:10;}
+    .mat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--terracotta);opacity:0.3;line-height:1;display:block;}
+    .mat-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--ivory);margin-bottom:0.4rem;}
+    .mat-subtitle{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(244,239,230,0.4);}
+    .mat-desc{font-size:0.78rem;color:rgba(244,239,230,0.55);line-height:1.7;margin-top:0.6rem;max-height:0;overflow:hidden;transition:max-height 0.4s;}
+    .mat-card:hover .mat-desc{max-height:100px;}
+
+    /* colour fills — palette colours as fallback behind images */
+    .m1{background:var(--rust) url('images/mat-salvage.jpg') center/cover no-repeat;}
+    .m2{background:var(--charcoal) url('images/mat-doors.jpg') center/cover no-repeat;}
+    .m3{background:var(--dark-sage) url('images/mat-pillars.jpg') center/cover no-repeat;}
+    .m4{background:var(--mid) url('images/mat-wood-slab.jpg') center/cover no-repeat;}
+    .m5{background:var(--sage) url('images/mat-roots.jpg') center/cover no-repeat;}
+    .m6{background:var(--gold) url('images/mat-brass.jpg') center/cover no-repeat;}
+    .m7{background:var(--ink) url('images/mat-stone.jpg') center/cover no-repeat;}
+    .m8{background:var(--terracotta) url('images/mat-fragments.jpg') center/cover no-repeat;}
+    .m9{background:var(--charcoal) url('images/mat-offcuts.jpg') center/cover no-repeat;}
+
+    /* PHILOSOPHY SECTION */
+    .mat-philosophy{padding:6rem 4rem;background:var(--charcoal);}
+    .mp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+    .mp-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;color:var(--ivory);line-height:1.5;border-left:3px solid var(--terracotta);padding-left:2rem;}
+    .mp-body p{font-size:0.87rem;color:rgba(244,239,230,0.55);line-height:1.95;margin-bottom:1rem;}
+    .mp-body p em{font-style:italic;color:rgba(244,239,230,0.8);}
+    .mp-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem;}
+    .mp-tag{padding:0.3rem 0.9rem;border:1px solid rgba(244,239,230,0.15);font-size:0.65rem;letter-spacing:0.1em;color:rgba(244,239,230,0.45);}
+
+    /* PROCESS */
+    .mat-process{padding:6rem 4rem;background:var(--ink);}
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem;}
+    .ps{padding:2.5rem 2rem;transition:opacity 0.3s;}
+    .ps:hover{opacity:0.85;}
+    .ps:nth-child(1){background:var(--charcoal);}
+    .ps:nth-child(2){background:var(--terracotta);}
+    .ps:nth-child(3){background:var(--sage);}
+    .ps:nth-child(4){background:var(--rust);}
+    .ps-n{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(255,255,255,0.15);line-height:1;margin-bottom:1rem;}
+    .ps h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ivory);margin-bottom:0.6rem;}
+    .ps p{font-size:0.77rem;color:rgba(255,255,255,0.6);line-height:1.8;}
+
+    /* CTA */
+    .mat-cta{padding:5rem 4rem;background:var(--terracotta);display:flex;justify-content:space-between;align-items:center;gap:3rem;}
+    .mat-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.5rem);font-weight:300;color:#fff;line-height:1.2;}
+    .mat-cta h2 em{opacity:0.7;font-style:italic;}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;}
+    .btn-dark:hover{background:#000;}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,239,230,0.06);}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero-content{animation:fadeUp 1s 0.3s ease forwards;opacity:0;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{padding:7rem 1.5rem 4rem;}.hero-body{grid-template-columns:1fr;}
+      .intro-statement{padding:3rem 1.5rem;}
+      .materials-grid{grid-template-columns:1fr 1fr;}
+      .mat-philosophy{padding:4rem 1.5rem;}.mp-grid{grid-template-columns:1fr;}
+      .mat-process{padding:4rem 1.5rem;}.process-steps{grid-template-columns:repeat(2,1fr);}
+      .mat-cta{flex-direction:column;padding:4rem 1.5rem;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html" class="active">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Material Library</p>
+      <h1 class="hero-title">Every material<br>has a <em>memory.</em></h1>
+      <div class="hero-body">
+        <div class="hero-text"><p>I work with architectural salvage, reclaimed objects, and natural elements — not as raw inputs, but as found design. Each material carries a history. My job is to find where that history belongs next.</p></div>
+        <div class="hero-nums">
+          <div class="hnum"><span class="hnum-n">9+</span><span class="hnum-l">Material Categories</span></div>
+          <div class="hnum"><span class="hnum-n">∞</span><span class="hnum-l">Possible Forms</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro-statement">
+    <p>"Before I design anything, I read the material. Where it came from. What it has been. What it still wants to become. That reading is the first design decision."</p>
+  </div>
+
+  <!-- MATERIAL GRID -->
+  <div class="materials-grid">
+    <div class="mat-card">
+      <div class="mat-card-fill m1"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">01</span>
+        <h3 class="mat-title">Architectural Salvage</h3>
+        <p class="mat-subtitle">Rescued · Recontextualised</p>
+        <p class="mat-desc">Old structural elements — beams, columns, grilles, brackets — pulled from demolition sites and reintegrated as design anchors in new spaces.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m2"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">02</span>
+        <h3 class="mat-title">Old Doors & Windows</h3>
+        <p class="mat-subtitle">Frames · Panels · Installations</p>
+        <p class="mat-desc">The material that started it all. Removed doors become walls, frames become furniture, panels become art. Every door already knows what room it belongs in next.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m3"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">03</span>
+        <h3 class="mat-title">Pillars & Beams</h3>
+        <p class="mat-subtitle">Structural · Sculptural</p>
+        <p class="mat-desc">Heritage pillars and wooden beams repurposed as furniture bases, spatial dividers, and sculptural installation elements. Structure as story.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m4"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">04</span>
+        <h3 class="mat-title">Wood Slabs</h3>
+        <p class="mat-subtitle">Live Edge · Natural Form</p>
+        <p class="mat-desc">Live-edge slabs and irregular wood sections — used for table tops, shelving, and sculptural elements where the natural form is the design decision.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m5"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">05</span>
+        <h3 class="mat-title">Tree Roots & Organic Forms</h3>
+        <p class="mat-subtitle">Found · Untreated · Alive</p>
+        <p class="mat-desc">Root systems, driftwood, and organic wood forms integrated as sculptural objects, lighting bases, and spatial anchors that bring living energy into designed environments.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m6"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">06</span>
+        <h3 class="mat-title">Brass Objects</h3>
+        <p class="mat-subtitle">Moradabad · Dhokra · Handcast</p>
+        <p class="mat-desc">Antique and artisan brass — urns, vessels, hardware, Dhokra cast objects — used as lighting elements, hardware, sculptural accents, and installation anchors.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m7"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">07</span>
+        <h3 class="mat-title">Stone & Tiles</h3>
+        <p class="mat-subtitle">Natural · Antique · Chettinad</p>
+        <p class="mat-desc">Chettinad kotah stone, antique floor tiles, natural stone fragments — repurposed as flooring accents, wall panels, outdoor pathways, and furniture surfaces.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m8"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">08</span>
+        <h3 class="mat-title">Antique Fragments</h3>
+        <p class="mat-subtitle">Found · Embedded · Honoured</p>
+        <p class="mat-desc">Ceramic shards, carved stone fragments, old metal hardware, broken tiles — embedded into new surfaces, framed as art, or used as inlay elements to carry history forward.</p>
+      </div>
+    </div>
+    <div class="mat-card">
+      <div class="mat-card-fill m9"></div>
+      <div class="mat-card-content">
+        <span class="mat-num">09</span>
+        <h3 class="mat-title">Workshop & Packaging Waste</h3>
+        <p class="mat-subtitle">Off-cuts · Remade · Closed Loop</p>
+        <p class="mat-desc">Off-cuts from carpentry, packaging materials, waste from production — reused as small decor objects, texture panels, and experimental material compositions. Nothing leaves as waste.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div class="mat-philosophy">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>The Approach</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:var(--ivory);margin-bottom:3rem;">Material is not <em>input.</em><br>Material is <em>design.</em></h2>
+    <div class="mp-grid">
+      <p class="mp-quote">"Why should we buy things, when we already have so many things that can be repurposed? The question is never what to add. It is what is already there."</p>
+      <div class="mp-body">
+        <p>This material library is not a catalogue. It is a living reference — built from years of site visits, salvage finds, artisan workshops, and demolition discoveries across South India.</p>
+        <p>Every material here has been <em>evaluated</em> — not just for its visual quality, but for its structural integrity, longevity, workability, and the kind of story it carries into a new space.</p>
+        <p>The goal is always a closed loop: what was discarded becomes essential. What was forgotten becomes the centrepiece. What was waste becomes the most meaningful element in the room.</p>
+        <div class="mp-tags">
+          <span class="mp-tag">Reclaimed</span><span class="mp-tag">Salvaged</span><span class="mp-tag">Organic</span><span class="mp-tag">Zero Waste</span><span class="mp-tag">Site-Found</span><span class="mp-tag">Traditional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="mat-process">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>How I Work With Materials</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;color:var(--ivory);">From <em>discovery</em> to <em>permanence</em></h2>
+    <div class="process-steps">
+      <div class="ps"><div class="ps-n">01</div><h3>I go looking before I go buying</h3><p>I visit demolition sites, salvage yards, artisan clusters, and material yards across South India before anything else. The right material is almost never in a showroom.</p></div>
+      <div class="ps"><div class="ps-n">02</div><h3>I read what the material remembers</h3><p>Every salvaged piece has a history — in its grain, its weight, its wear, its resistance. I spend time understanding what it has been and what it is still capable of becoming.</p></div>
+      <div class="ps"><div class="ps-n">03</div><h3>I test before I trust</h3><p>I prototype at scale. I test finishes, joins, and structural durability under real conditions. A material that looks extraordinary but fails in three years is not a material — it is a mistake I made.</p></div>
+      <div class="ps"><div class="ps-n">04</div><h3>I place it once, for this space only</h3><p>Every material placement is a singular, irreversible decision made for a specific space, a specific brief, and a specific person. I never use templates. I never repeat placements.</p></div>
+    </div>
+  </div>
+
+  <div class="mat-cta">
+    <h2>See materials <em>in the work</em></h2>
+    <a class="btn-dark" href="portfolio.html">View Portfolio</a>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+</body>
+</html>

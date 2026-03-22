@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--dark-sage:#4A5C40;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--muted:#8A8278;--gold:#B8942C;--light-sage:#B8C8A8;--off-white:#FAF7F2;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ivory);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--off-white);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.5;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:var(--rust);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.12);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--off-white);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:var(--off-white);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--off-white);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(244,239,230,0.98);backdrop-filter:blur(16px);border:1px solid rgba(168,88,64,0.1);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(---off-white);}
+    .nav-cta{border:1px solid var(--terracotta) !important;color:var(--terracotta) !important;}
+    .nav-cta:hover{background:var(--charcoal) !important;color:#fff !important;}
+    .lbl{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;}
+    .lbl::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--off-white);}
+    .h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.12;color:var(--charcoal);}
+    .h2 em{font-style:italic;color:var(--off-white);}
+
+    /* PAGE HERO */
+    .page-hero{padding:9rem 4rem 5rem;background:var(--ink);}
+    .ph-label{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--off-white);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.2rem;}
+    .ph-label::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .ph-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;color:var(--ivory);line-height:1.05;margin-bottom:1.5rem;}
+    .ph-title em{font-style:italic;color:var(--terracotta);}
+    .ph-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.4);max-width:600px;line-height:1.65;}
+
+    /* SECTION NAV */
+    .section-nav{position:sticky;top:4.4rem;z-index:100;background:var(--sage);border-bottom:1px solid var(--parchment);display:flex;gap:0;overflow-x:auto;}
+    .section-nav a{padding:1rem 1.5rem;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.25s;}
+    .section-nav a:hover,.section-nav a.snav-active{color:var(--off-white);border-bottom-color:var(--off-white);}
+
+    /* PORTFOLIO SECTION */
+    .port-section{padding:6rem 4rem;}
+    .port-section:nth-child(even){background:var(--cream);}
+    .port-section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--parchment);}
+    .port-section-header-left{}
+    .port-section-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:var(--terracotta);opacity:0.15;line-height:1;margin-bottom:-0.5rem;}
+    .port-section-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--charcoal);}
+    .port-section-title em{font-style:italic;color:var(--terracotta);}
+    .port-section-desc{font-size:0.82rem;color:var(--mid);max-width:480px;line-height:1.8;}
+
+    /* PROJECT GRID — MASONRY-LIKE */
+    .proj-grid{display:grid;gap:2px;}
+    .proj-grid-3{grid-template-columns:1.4fr 1fr 1fr;}
+    .proj-grid-2{grid-template-columns:1fr 1fr;}
+    .proj-grid-4{grid-template-columns:repeat(4,1fr);}
+
+    .proj-card{position:relative;overflow:hidden;cursor:pointer;}
+    .proj-card.tall{grid-row:span 2;}
+    .proj-card-fill{width:100%;height:100%;min-height:280px;transition:transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .proj-card.tall .proj-card-fill{min-height:560px;}
+    .proj-card:hover .proj-card-fill{transform:scale(1.05);}
+
+    /* project card images */
+    .c-forest{background:url('images/int-vibe-house.jpg') center/cover no-repeat;}
+    .c-clay{background:url('images/int-cafe.jpg') center/cover no-repeat;}
+    .c-terra{background:url('images/int-restobar.jpg') center/cover no-repeat;}
+    .c-sage{background:url('images/int-residential.jpg') center/cover no-repeat;}
+    .c-moss{background:url('images/int-resort.jpg') center/cover no-repeat;}
+    .c-oak{background:url('images/furn-wood-table.jpg') center/cover no-repeat;}
+    .c-brass{background:url('images/light-brass-pendant.jpg') center/cover no-repeat;}
+    .c-stone{background:url('images/light-sconce.jpg') center/cover no-repeat;}
+    .c-night{background:url('images/land-resort.jpg') center/cover no-repeat;}
+    .c-rust{background:url('images/land-courtyard.jpg') center/cover no-repeat;}
+    .c-gold{background:url('images/wall-tanjore.jpg') center/cover no-repeat;}
+    .c-charcoal{background:url('images/furn-console.jpg') center/cover no-repeat;}
+
+    .proj-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(to top,rgba(26,25,20,0.9) 0%,transparent 100%);transform:translateY(100%);transition:transform 0.4s;}
+    .proj-card:hover .proj-card-info{transform:translateY(0);}
+    .proj-card-cat{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,239,230,0.55);margin-bottom:0.3rem;}
+    .proj-card-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ivory);}
+    .proj-card-craft{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.6rem;}
+    .pcc{font-size:0.58rem;letter-spacing:0.08em;background:rgba(244,239,230,0.1);color:rgba(244,239,230,0.6);padding:0.15rem 0.5rem;}
+
+    /* PROJECT DETAIL STRIP */
+    .proj-detail-strip{background:var(--charcoal);padding:3rem 4rem;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2rem;margin-top:2px;}
+    .pds-item{}
+    .pds-label{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.4rem;}
+    .pds-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);}
+    .pds-sub{font-size:0.72rem;color:rgba(244,239,230,0.4);margin-top:0.2rem;}
+
+    /* CTA */
+    .port-cta{padding:6rem 4rem;background:var(--terracotta);display:flex;justify-content:space-between;align-items:center;gap:3rem;}
+    .port-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;}
+    .port-cta h2 em{font-style:italic;opacity:0.7;}
+    .port-cta-btns{display:flex;gap:1rem;}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;}
+    .btn-dark:hover{background:#000;}
+    .btn-ghost-w{display:inline-block;padding:0.8rem 2rem;border:1px solid rgba(255,255,255,0.4);color:#fff;text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:all 0.3s;}
+    .btn-ghost-w:hover{background:rgba(255,255,255,0.1);}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .page-hero{padding:7rem 1.5rem 3rem;}
+      .port-section{padding:4rem 1.5rem;}
+      .proj-grid-3,.proj-grid-2,.proj-grid-4{grid-template-columns:1fr 1fr;}
+      .proj-card.tall{grid-row:span 1;}
+      .proj-card.tall .proj-card-fill{min-height:280px;}
+      .proj-card-info{transform:translateY(0);background:linear-gradient(to top,rgba(26,25,20,0.85) 0%,transparent 60%);}
+      .proj-detail-strip{grid-template-columns:1fr 1fr;padding:2rem 1.5rem;}
+      .port-cta{flex-direction:column;padding:4rem 1.5rem;}
+      .port-section-header{flex-direction:column;align-items:flex-start;gap:1rem;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html" class="active">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="#interiors">Interiors</a></li>
+          <li><a href="#landscape">Landscape</a></li>
+          <li><a href="#furniture">Furniture</a></li>
+          <li><a href="#lighting">Lighting</a></li>
+          <li><a href="#wallart">Wall Art</a></li>
+          <li><a href="#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <p class="ph-label">Portfolio</p>
+    <h1 class="ph-title">Spaces, Objects<br>& <em>Material Experiences</em></h1>
+    <p class="ph-sub">Work of Jayasri Priyadharshini — Spatial & Material Practice, 2020 – Present</p>
+  </div>
+
+  <nav class="section-nav">
+    <a href="#interiors" class="snav-active">Interiors</a>
+    <a href="#landscape">Landscape</a>
+    <a href="#furniture">Furniture</a>
+    <a href="#lighting">Lighting</a>
+    <a href="#wallart">Wall Art</a>
+    <a href="#products">Products</a>
+  </nav>
+
+  <!-- ── 01 INTERIORS ── -->
+  <section class="port-section" id="interiors">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">01</div>
+        <h2 class="port-section-title">Interior <em>Spaces</em></h2>
+      </div>
+      <p class="port-section-desc">Homes, cafés, restaurants, restobars, and resorts — concept-driven environments designed from material outward, not from mood board inward.</p>
+    </div>
+    <div class="proj-grid proj-grid-3">
+      <div class="proj-card tall">
+        <div class="proj-card-fill c-forest"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Origin Project · Retail · 2020</p>
+          <p class="proj-card-name">Vibe House — Urbanpots Store</p>
+          <div class="proj-card-craft"><span class="pcc">Reclaimed Doors</span><span class="pcc">Warli Art</span><span class="pcc">Salvaged Wood</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-clay"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Hospitality · Café</p>
+          <p class="proj-card-name">Café Interior</p>
+          <div class="proj-card-craft"><span class="pcc">Moradabad Brass</span><span class="pcc">Lippan Wall</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-terra"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Hospitality · Restobar</p>
+          <p class="proj-card-name">Restobar Design</p>
+          <div class="proj-card-craft"><span class="pcc">Saharanpur Panels</span><span class="pcc">Kalamkari</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-sage"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Residential · Home</p>
+          <p class="proj-card-name">Residential Interior</p>
+          <div class="proj-card-craft"><span class="pcc">Chettinad Carving</span><span class="pcc">Tanjore</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-moss"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Hospitality · Resort</p>
+          <p class="proj-card-name">Resort Suite</p>
+          <div class="proj-card-craft"><span class="pcc">Kerala Mural</span><span class="pcc">Natural Stone</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-detail-strip">
+      <div class="pds-item"><p class="pds-label">Project Types</p><p class="pds-val">Homes · Cafés · Restobars · Resorts</p></div>
+      <div class="pds-item"><p class="pds-label">Approach</p><p class="pds-val">Material-led, concept-driven</p></div>
+      <div class="pds-item"><p class="pds-label">Delivery</p><p class="pds-val">End-to-end, concept to completion</p></div>
+      <div class="pds-item"><p class="pds-label">Location</p><p class="pds-val">Pondicherry & South India</p></div>
+    </div>
+  </section>
+
+  <!-- ── 02 LANDSCAPE ── -->
+  <section class="port-section" id="landscape">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">02</div>
+        <h2 class="port-section-title">Landscape & <em>Courtyard</em></h2>
+      </div>
+      <p class="port-section-desc">Outdoor environments designed as living ecosystems — integrating plants, stone, wood, and water. Not decorative add-ons. Living architecture.</p>
+    </div>
+    <div class="proj-grid proj-grid-2">
+      <div class="proj-card">
+        <div class="proj-card-fill c-forest" style="min-height:380px;"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Landscape · Resort</p>
+          <p class="proj-card-name">Resort Landscape</p>
+          <div class="proj-card-craft"><span class="pcc">Natural Stone</span><span class="pcc">Water Feature</span><span class="pcc">Indigenous Plants</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-dark-sage" style="min-height:380px;background:url('images/land-garden.jpg') center/cover no-repeat;"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Courtyard · Residential</p>
+          <p class="proj-card-name">Courtyard Garden</p>
+          <div class="proj-card-craft"><span class="pcc">Reclaimed Wood</span><span class="pcc">Stone Pathways</span></div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-moss" style="min-height:280px;background:url('images/land-cafe-outdoor.jpg') center/cover no-repeat;"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Outdoor · Commercial</p>
+          <p class="proj-card-name">Café Outdoor Space</p>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-card-fill c-sage" style="min-height:280px;background:url('images/land-private.jpg') center/cover no-repeat;"></div>
+        <div class="proj-card-info">
+          <p class="proj-card-cat">Landscape · Private</p>
+          <p class="proj-card-name">Private Garden Ecosystem</p>
+        </div>
+      </div>
+    </div>
+    <div class="proj-detail-strip">
+      <div class="pds-item"><p class="pds-label">Types</p><p class="pds-val">Gardens · Courtyards · Resort Landscapes</p></div>
+      <div class="pds-item"><p class="pds-label">Materials</p><p class="pds-val">Stone · Wood · Water · Living Plants</p></div>
+      <div class="pds-item"><p class="pds-label">Includes</p><p class="pds-val">AMC — Annual Maintenance Contracts</p></div>
+      <div class="pds-item"><p class="pds-label">Philosophy</p><p class="pds-val">Living ecosystems, not decoration</p></div>
+    </div>
+  </section>
+
+  <!-- ── 03 FURNITURE ── -->
+  <section class="port-section" id="furniture">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">03</div>
+        <h2 class="port-section-title">Furniture <em>Design</em></h2>
+      </div>
+      <p class="port-section-desc">Custom and sculptural furniture designed and built using reclaimed, traditional, and mixed materials. Every piece is made once, for its exact context.</p>
+    </div>
+    <div class="proj-grid proj-grid-4">
+      <div class="proj-card"><div class="proj-card-fill c-oak" style="min-height:340px;background:url('images/furn-wood-table.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Sculptural · Reclaimed</p><p class="proj-card-name">Salvaged Wood Table</p><div class="proj-card-craft"><span class="pcc">Reclaimed Teak</span><span class="pcc">Hand-finished</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-clay" style="min-height:340px;background:url('images/furn-chair.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Seating · Sculptural</p><p class="proj-card-name">Sculptural Chair</p><div class="proj-card-craft"><span class="pcc">Wood + Metal</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-stone" style="min-height:340px;background:url('images/furn-cabinet.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Storage · Custom</p><p class="proj-card-name">Reclaimed Door Cabinet</p><div class="proj-card-craft"><span class="pcc">Old Door</span><span class="pcc">Brass Inlay</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-charcoal" style="min-height:340px;background:url('images/furn-console.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Console · Mixed Media</p><p class="proj-card-name">Wood + Concrete Console</p><div class="proj-card-craft"><span class="pcc">Wood Slab</span><span class="pcc">Concrete</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- ── 04 LIGHTING ── -->
+  <section class="port-section" id="lighting">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">04</div>
+        <h2 class="port-section-title">Lighting <em>Design</em></h2>
+      </div>
+      <p class="port-section-desc">Handcrafted lighting systems — Moradabad brass, reclaimed wood, natural fibre, and salvaged elements. Every fixture changes how a space breathes.</p>
+    </div>
+    <div class="proj-grid proj-grid-3">
+      <div class="proj-card"><div class="proj-card-fill c-brass" style="min-height:360px;background:url('images/light-brass-pendant.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Pendant · Brass</p><p class="proj-card-name">Moradabad Brass Pendant</p><div class="proj-card-craft"><span class="pcc">Moradabad Brass GI</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-oak" style="min-height:360px;background:url('images/light-driftwood.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Installation · Wood</p><p class="proj-card-name">Driftwood Cluster</p><div class="proj-card-craft"><span class="pcc">Driftwood</span><span class="pcc">Exposed Filament</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-stone" style="min-height:360px;background:url('images/light-sconce.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Wall · Salvaged</p><p class="proj-card-name">Salvaged Frame Sconce</p><div class="proj-card-craft"><span class="pcc">Reclaimed Frame</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- ── 05 WALL ART ── -->
+  <section class="port-section" id="wallart">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">05</div>
+        <h2 class="port-section-title">Wall Art & <em>Installations</em></h2>
+      </div>
+      <p class="port-section-desc">Lippan, Warli, Tanjore, Madhubani, mixed-media relief — traditional craft traditions integrated as spatial narratives, not decoration.</p>
+    </div>
+    <div class="proj-grid proj-grid-2">
+      <div class="proj-card tall"><div class="proj-card-fill c-terra" style="min-height:500px;background:url('images/wall-lippan.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Relief · Kutch</p><p class="proj-card-name">Lippan Feature Wall</p><div class="proj-card-craft"><span class="pcc">Lippan · Mirror & Clay</span><span class="pcc">Kutch Tradition</span></div></div></div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div class="proj-card"><div class="proj-card-fill c-moss" style="min-height:240px;background:url('images/wall-warli.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Painting · Maharashtra</p><p class="proj-card-name">Warli Mural</p><div class="proj-card-craft"><span class="pcc">Warli · Hand-painted</span></div></div></div>
+        <div class="proj-card"><div class="proj-card-fill c-gold" style="min-height:240px;background:url('images/wall-tanjore.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Painting · Tamil Nadu</p><p class="proj-card-name">Tanjore Panel</p><div class="proj-card-craft"><span class="pcc">Tanjore · Gold Leaf</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06 PRODUCTS ── -->
+  <section class="port-section" id="products">
+    <div class="port-section-header">
+      <div class="port-section-header-left">
+        <div class="port-section-num">06</div>
+        <h2 class="port-section-title">Products & <em>Decor</em></h2>
+      </div>
+      <p class="port-section-desc">Botanical, handmade, and reclaimed objects designed for everyday life. Objects that carry meaning because they were made with it.</p>
+    </div>
+    <div class="proj-grid proj-grid-4">
+      <div class="proj-card"><div class="proj-card-fill c-sage" style="min-height:300px;background:url('images/prod-vessel.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Botanical · Planter</p><p class="proj-card-name">Reclaimed Vessel</p></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-brass" style="min-height:300px;background:url('images/prod-dhokra.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Decor · Brass</p><p class="proj-card-name">Dhokra Object</p><div class="proj-card-craft"><span class="pcc">Dhokra Casting</span></div></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-clay" style="min-height:300px;background:url('images/prod-macrame.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Textile · Macramé</p><p class="proj-card-name">Macramé Wall Hanging</p></div></div>
+      <div class="proj-card"><div class="proj-card-fill c-charcoal" style="min-height:300px;background:url('images/prod-pyrography.jpg') center/cover no-repeat;"></div><div class="proj-card-info"><p class="proj-card-cat">Pyrography · Wood</p><p class="proj-card-name">Pyrography Panel</p></div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="port-cta">
+    <h2>Have a space in mind?<br>Let's make it <em>real.</em></h2>
+    <div class="port-cta-btns">
+      <a class="btn-dark" href="contact.html">Start a Conversation</a>
+      <a class="btn-ghost-w" href="materials.html">Material Library →</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+
+  <script>
+    // Sticky section nav highlight
+    const sections=document.querySelectorAll('.port-section');
+    const navLinks=document.querySelectorAll('.section-nav a');
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.remove('snav-active'));const id=e.target.id;const a=document.querySelector('.section-nav a[href="#'+id+'"]');if(a)a.classList.add('snav-active');}});
+    },{rootMargin:'-30% 0px -60% 0px'});
+    sections.forEach(s=>obs.observe(s));
+  </script>
+</body>
+</html>

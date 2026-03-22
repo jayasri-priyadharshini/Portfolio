@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jayasri Priyadharshini — Spatial Designer · Material Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --ivory:#F4EFE6;--cream:#EBE3D5;--terracotta:#A85840;--rust:#7A3828;
+      --sage:#6E8060;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;width:100%;overflow:hidden;background:var(--ink);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;}
+
+    /* ── NAV ── */
+    nav{
+      height:56px;
+      position:fixed;top:0;left:0;right:0;z-index:300;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:0 3rem;
+      background:var(--rust);
+      border-bottom:1px solid rgba(0,0,0,0.15);
+    }
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;letter-spacing:0.2em;color:#fff;text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li{position:relative;}
+    .nav-links>li>a{text-decoration:none;color:rgba(255,255,255,0.85);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 1rem;display:block;}
+    .nav-links>li>a:hover{color:#fff;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:var(--rust);border:none;min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.3s;}
+    .dropdown a{display:block;padding:0.6rem 1.2rem;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color 0.2s,background 0.2s;}
+    .dropdown a:hover{color:#fff;background:rgba(0,0,0,0.15);}
+    .nav-cta{padding:0.4rem 1.1rem !important;border:1px solid rgba(255,255,255,0.6)!important;color:#fff!important;font-weight:500!important;transition:all 0.3s!important;}
+    .nav-cta:hover{background:#fff!important;border-color:#fff!important;color:var(--terracotta)!important;}
+
+    /* ── PAGE — full height minus nav, split into 2 rows ── */
+    .page{
+      position:fixed;
+      top:56px;left:0;right:0;bottom:0;
+      display:grid;
+      grid-template-rows:auto 1fr;
+    }
+
+    /* ── TOP ROW — identity section ── */
+    .hero{
+      background:var(--ink);
+      padding:2.5rem 4rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:3rem;
+      border-bottom:1px solid rgba(168,88,64,0.2);
+    }
+    .hero-left{}
+    .hero-name{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.2rem,3.5vw,3.4rem);
+      font-weight:300;
+      letter-spacing:0.04em;
+      color:var(--ivory);
+      line-height:1.05;
+    }
+    .hero-name em{font-style:italic;color:var(--terracotta);}
+    .hero-rule{width:3rem;height:1px;background:var(--terracotta);margin:1rem 0;opacity:0.6;}
+    .hero-role{font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(244,239,230,0.45);line-height:2;}
+    .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:1.2rem;}
+    .hero-tagline{
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.05rem;font-style:italic;
+      color:rgba(244,239,230,0.35);
+      line-height:1.65;
+      max-width:360px;
+      text-align:right;
+    }
+    .hero-actions{display:flex;gap:0.8rem;}
+    .ta-btn{display:inline-block;padding:0.65rem 1.8rem;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:all 0.3s;}
+    .ta-btn.primary{background:var(--rust);color:#fff;}
+    .ta-btn.primary:hover{background:var(--rust);}
+    .ta-btn.ghost{border:1px solid rgba(244,239,230,0.3);color:rgba(244,239,230,0.8);}
+    .ta-btn.ghost:hover{border-color:var(--ivory);color:var(--ivory);}
+
+    /* ── BOTTOM ROW — 6 panels ── */
+    .panels{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      grid-template-rows:1fr 1fr;
+      gap:2px;
+      background:var(--ink);
+      width:100%;
+      height:100%;
+    }
+    .panel{position:relative;overflow:hidden;cursor:pointer;}
+    .panel-fill{width:100%;height:100%;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);}
+    .panel:hover .panel-fill{transform:scale(1.06);}
+    .p1{background:url('images/panel-interiors.jpg') center/cover no-repeat;}
+    .p2{background:url('images/panel-landscape.jpg') center/cover no-repeat;}
+    .p3{background:url('images/panel-lighting.jpg') center/cover no-repeat;}
+    .p4{background:url('images/panel-wallart.jpg') center/cover no-repeat;}
+    .p5{background:url('images/panel-furniture.jpg') center/cover no-repeat;}
+    .p6{background:url('images/panel-materials.jpg') center/cover no-repeat;}
+    .panel::after{content:'';position:absolute;inset:0;z-index:2;background:rgba(20,19,14,0.32);transition:background 0.5s;pointer-events:none;}
+    .panel:hover::after{background:rgba(20,19,14,0.05);}
+    .panel-label{position:absolute;bottom:1rem;left:1.2rem;z-index:10;}
+    .panel-label span{font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(244,239,230,0.65);}
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes panelReveal{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:scale(1)}}
+    nav{animation:fadeUp 0.5s 0.0s ease both;}
+    .hero{animation:fadeUp 0.6s 0.15s ease both;}
+    .panel:nth-child(1){animation:panelReveal 1s 0.2s ease both;}
+    .panel:nth-child(2){animation:panelReveal 1s 0.28s ease both;}
+    .panel:nth-child(3){animation:panelReveal 1s 0.36s ease both;}
+    .panel:nth-child(4){animation:panelReveal 1s 0.25s ease both;}
+    .panel:nth-child(5){animation:panelReveal 1s 0.33s ease both;}
+    .panel:nth-child(6){animation:panelReveal 1s 0.41s ease both;}
+
+    /* ── MOBILE ── */
+    @media(max-width:900px){
+      html,body{overflow:auto;}
+      nav{padding:0 1.5rem;}
+      .nav-links>li>a{font-size:0.6rem;padding:0.4rem 0.5rem;}
+      .page{position:relative;top:56px;grid-template-rows:auto auto;}
+      .hero{flex-direction:column;align-items:flex-start;padding:2rem 1.5rem;gap:1.5rem;}
+      .hero-right{align-items:flex-start;}
+      .hero-tagline{text-align:left;}
+      .panels{height:60vw;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown">
+        <a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+
+    <!-- TOP: name and identity -->
+    <div class="hero">
+      <div class="hero-left">
+        <h1 class="hero-name">Jayasri<br><em>Priyadharshini</em></h1>
+        <div class="hero-rule"></div>
+        <p class="hero-role">Spatial Designer &nbsp;·&nbsp; Material Explorer &nbsp;·&nbsp; Founder – Urbanpots</p>
+      </div>
+      <div class="hero-right">
+        <p class="hero-tagline">Designing spaces, objects, and experiences through material, craft, and context.</p>
+        <div class="hero-actions">
+          <a class="ta-btn primary" href="portfolio.html">View Work</a>
+          <a class="ta-btn ghost" href="about.html">About Me</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM: 6 panels -->
+    <div class="panels">
+      <div class="panel" onclick="location.href='portfolio.html#interiors'">
+        <div class="panel-fill p1"></div>
+        <div class="panel-label"><span>Interior Spaces</span></div>
+      </div>
+      <div class="panel" onclick="location.href='portfolio.html#landscape'">
+        <div class="panel-fill p2"></div>
+        <div class="panel-label"><span>Landscape & Courtyard</span></div>
+      </div>
+      <div class="panel" onclick="location.href='portfolio.html#lighting'">
+        <div class="panel-fill p3"></div>
+        <div class="panel-label"><span>Lighting Design</span></div>
+      </div>
+      <div class="panel" onclick="location.href='portfolio.html#wallart'">
+        <div class="panel-fill p4"></div>
+        <div class="panel-label"><span>Wall Art & Installations</span></div>
+      </div>
+      <div class="panel" onclick="location.href='portfolio.html#furniture'">
+        <div class="panel-fill p5"></div>
+        <div class="panel-label"><span>Furniture Design</span></div>
+      </div>
+      <div class="panel" onclick="location.href='materials.html'">
+        <div class="panel-fill p6"></div>
+        <div class="panel-label"><span>Material Yard</span></div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

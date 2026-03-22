@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NAD Village — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--gold:#B8942C;--light-sage:#B8C8A8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ink);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--ink);}::-webkit-scrollbar-thumb{background:var(--terracotta);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(26,25,20,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.15);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--terracotta);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:rgba(244,239,230,0.5);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--ivory);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(26,25,20,0.97);backdrop-filter:blur(16px);border:1px solid rgba(244,239,230,0.08);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,239,230,0.45);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(--ivory);}
+    .nav-cta{border:1px solid rgba(168,88,64,0.6) !important;color:var(--terracotta) !important;}
+    .nav-cta:hover{background:var(--terracotta) !important;color:#fff !important;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 4rem 6rem;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,#2A3820 0%,#1A1914 50%,#0E0E0A 100%);}
+    .hero-pattern{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(168,88,64,0.04) 40px,rgba(168,88,64,0.04) 41px);}
+    .hero-content{position:relative;z-index:10;}
+    .hero-eyebrow{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:2rem;}
+    .hero-eyebrow::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,8rem);font-weight:300;line-height:0.92;margin-bottom:2.5rem;}
+    .hero-title em{font-style:italic;color:var(--terracotta);}
+    .hero-sub-row{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:end;}
+    .hero-desc{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-style:italic;color:rgba(244,239,230,0.45);line-height:1.65;}
+    .hero-pillars{display:flex;gap:2rem;}
+    .hp{text-align:center;}
+    .hp-letter{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--terracotta);line-height:1;display:block;}
+    .hp-word{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,239,230,0.35);margin-top:0.3rem;display:block;}
+
+    /* VISION STATEMENT */
+    .vision{background:rgba(156, 60, 0, 0.507);padding:5rem 4rem;}
+    .vision-inner{max-width:900px;}
+    .vision p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2rem);font-style:italic;color:#fff;line-height:1.55;margin-bottom:1.5rem;}
+    .vision-attr{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+
+    /* SPACES */
+    .spaces{padding:7rem 4rem;background:var(--charcoal);}
+    .spaces-intro{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.45);max-width:600px;line-height:1.65;margin:1.5rem 0 4rem;}
+    .spaces-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+    .space-card{padding:2.5rem 1.8rem;background:#3a4731;border:1px solid rgba(244,239,230,0.05);position:relative;overflow:hidden;transition:background 0.3s;}
+    .space-card:hover{background:rgba(156, 60, 0, 0.507);}
+    .space-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--terracotta);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+    .space-card:hover::before{transform:scaleX(1);}
+    .space-icon{font-size:1.6rem;margin-bottom:1rem;display:block;}
+    .space-card h3{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);margin-bottom:0.5rem;}
+    .space-card p{font-size:0.75rem;color:rgba(244,239,230,0.4);line-height:1.75;}
+    .space-badge{position:absolute;top:1rem;right:1rem;background:rgba(168,88,64,0.2);color:var(--terracotta);font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.2rem 0.5rem;}
+
+    /* ECOSYSTEM MAP */
+    .ecosystem{padding:7rem 4rem;background:var(--ink);}
+    .eco-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem;}
+    .eco-diagram{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+    .eco-node{padding:2rem 1.5rem;background:rgba(244,239,230,0.04);border:1px solid rgba(244,239,230,0.06);text-align:center;}
+    .eco-node.centre{grid-column:span 2;background:rgba(168,88,64,0.15);border-color:rgba(168,88,64,0.3);}
+    .eco-node h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);margin-bottom:0.3rem;}
+    .eco-node p{font-size:0.72rem;color:rgba(244,239,230,0.4);}
+    .eco-body p{font-size:0.87rem;color:rgba(244,239,230,0.55);line-height:1.95;margin-bottom:1rem;}
+    .eco-body p em{font-style:italic;color:rgba(244,239,230,0.8);}
+
+    /* FUTURE */
+    .future{padding:7rem 4rem;background:var(--charcoal);}
+    .future-items{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem;}
+    .fi{padding:2.5rem 2rem;background:rgba(244,239,230,0.04);border:1px solid rgba(244,239,230,0.05);}
+    .fi-status{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.6rem;margin-bottom:1rem;display:inline-block;}
+    .fi-status.active{background:rgba(110,128,96,0.3);color:var(--light-sage);}
+    .fi-status.dev{background:rgba(168,88,64,0.2);color:var(--terracotta);}
+    .fi-status.future{background:rgba(244,239,230,0.08);color:rgba(244,239,230,0.35);}
+    .fi h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ivory);margin-bottom:0.5rem;}
+    .fi p{font-size:0.77rem;color:rgba(244,239,230,0.4);line-height:1.8;}
+
+    /* CTA */
+    .nad-cta{padding:6rem 4rem;background:rgba(156, 60, 0, 0.507);display:flex;justify-content:space-between;align-items:center;gap:3rem;}
+    .nad-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;}
+    .nad-cta h2 em{font-style:italic;opacity:0.7;}
+    .nad-cta-btns{display:flex;gap:1rem;}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;}
+    .btn-dark:hover{background:#000;}
+    .btn-ghost-w{display:inline-block;padding:0.8rem 2rem;border:1px solid rgba(255,255,255,0.4);color:#fff;text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:all 0.3s;}
+    .btn-ghost-w:hover{background:rgba(255,255,255,0.1);}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,239,230,0.06);}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero-content{animation:fadeUp 1s 0.3s ease forwards;opacity:0;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{padding:7rem 1.5rem 4rem;}.hero-sub-row{grid-template-columns:1fr;}
+      .vision{padding:4rem 1.5rem;}
+      .spaces{padding:4rem 1.5rem;}.spaces-grid{grid-template-columns:repeat(2,1fr);}
+      .ecosystem{padding:4rem 1.5rem;}.eco-grid{grid-template-columns:1fr;}
+      .future{padding:4rem 1.5rem;}.future-items{grid-template-columns:1fr 1fr;}
+      .nad-cta{flex-direction:column;padding:4rem 1.5rem;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html" class="active">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Vision · In Development</p>
+      <h1 class="hero-title">NAD<br><em>Village</em></h1>
+      <div class="hero-sub-row">
+        <p class="hero-desc">A holistic design ecosystem where nature, art, and design — and the people who practice them — come together as one living, working, creating community.</p>
+        <div class="hero-pillars">
+          <div class="hp"><span class="hp-letter">N</span><span class="hp-word">Nature</span></div>
+          <div class="hp"><span class="hp-letter">·</span></div>
+          <div class="hp"><span class="hp-letter">A</span><span class="hp-word">Art</span></div>
+          <div class="hp"><span class="hp-letter">·</span></div>
+          <div class="hp"><span class="hp-letter">D</span><span class="hp-word">Design</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vision">
+    <div class="vision-inner">
+      <p>"NAD Village is not a destination. It is a way of living, making, and building — where design, culture, craft, and commerce are not separate activities but one continuous practice."</p>
+      <span class="vision-attr">— Jayasri Priyadharshini, Creator of NAD Village</span>
+    </div>
+  </div>
+
+  <!-- THE SPACES -->
+  <div class="spaces">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>The Spaces</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--ivory);">Ten spaces.<br><em>One ecosystem.</em></h2>
+    <p class="spaces-intro">Each space at NAD Village serves a different function — but together, they form a single integrated system where design is not a service but a way of life.</p>
+    <div class="spaces-grid">
+      <div class="space-card"><span class="space-icon">🎨</span><h3>Design Studio</h3><p>The creative core — where spatial, product, and material design happens, with clients and in solitude.</p><span class="space-badge">Active</span></div>
+      <div class="space-card"><span class="space-icon">🪵</span><h3>Material Yard</h3><p>A living library of reclaimed, salvaged, and found materials — available for research, sourcing, and exploration.</p><span class="space-badge">Active</span></div>
+      <div class="space-card"><span class="space-icon">🔨</span><h3>Workshop</h3><p>Fabrication, carpentry, painting, craft — hands-on making happens here. Where ideas become objects.</p></div>
+      <div class="space-card"><span class="space-icon">🏪</span><h3>Experiential Retail</h3><p>Not a shop. A designed experience where every product has a story and every object earns its place.</p></div>
+      <div class="space-card"><span class="space-icon">☕</span><h3>Café</h3><p>A designed space for gathering, conversation, and the kind of slow attention that good work requires.</p></div>
+      <div class="space-card"><span class="space-icon">🏺</span><h3>Craft Labs</h3><p>Dedicated spaces for specific traditional crafts — Lippan, woodcarving, textile, metal — where artisans work and teach.</p></div>
+      <div class="space-card"><span class="space-icon">🌿</span><h3>Installations</h3><p>Outdoor and indoor site-specific art installations — permanent, rotating, and commissioned.</p></div>
+      <div class="space-card"><span class="space-icon">🎪</span><h3>Events Space</h3><p>Design talks, craft markets, community gatherings, workshops — a programmed cultural calendar.</p></div>
+      <div class="space-card"><span class="space-icon">🏡</span><h3>Stay / Homestay</h3><p>A designed residential experience — where guests live inside the philosophy, not just observe it.</p><span class="space-badge">Future</span></div>
+      <div class="space-card"><span class="space-icon">🤝</span><h3>Community Space</h3><p>Open to designers, artisans, architects, makers — a shared space for collaboration, cross-pollination, and building.</p></div>
+    </div>
+  </div>
+
+  <!-- ECOSYSTEM MAP -->
+  <div class="ecosystem">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>The System</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--ivory);">Design · Culture · Craft<br><em>Commerce — as one system</em></h2>
+    <div class="eco-grid">
+      <div class="eco-diagram">
+        <div class="eco-node centre"><h4>NAD Village</h4><p>The integrated whole</p></div>
+        <div class="eco-node"><h4>Design Studio</h4><p>Spatial · Product · Material</p></div>
+        <div class="eco-node"><h4>Artisan Networks</h4><p>Makers · Craftspeople · Teachers</p></div>
+        <div class="eco-node"><h4>Retail + Café</h4><p>Experience · Commerce</p></div>
+        <div class="eco-node"><h4>Digital Platform</h4><p>Content · Community · Store</p></div>
+      </div>
+      <div class="eco-body">
+        <p>Most design ecosystems are linear: client → designer → contractor → done. NAD Village is circular. The studio feeds the workshop. The workshop feeds the material yard. The material yard feeds the retail. The retail funds the craft labs. The craft labs train new artisans. The artisans come back into the studio.</p>
+        <p>This is what <em>ecosystem</em> means — not a collection of services, but a system where each part sustains the others. Where design is not extracted from culture but grown inside it.</p>
+        <p>It is a model that can be replicated. A village that can be built wherever design, craft, and community choose to meet.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASES -->
+  <div class="future">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>Build Phases</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--ivory);">Building it <em>one layer</em><br>at a time</h2>
+    <div class="future-items">
+      <div class="fi"><span class="fi-status active">Active</span><h3>Phase 01 — Studio & Store</h3><p>Design studio, material sourcing, retail, and project delivery. The foundation from which everything else grows.</p></div>
+      <div class="fi"><span class="fi-status dev">In Development</span><h3>Phase 02 — Workshop & Craft Labs</h3><p>Physical workshop and dedicated craft lab spaces for fabrication, artisan residencies, and community workshops.</p></div>
+      <div class="fi"><span class="fi-status dev">In Development</span><h3>Phase 03 — Material Yard</h3><p>An open material library — available for designers, architects, and the public to source reclaimed and traditional materials.</p></div>
+      <div class="fi"><span class="fi-status dev">In Development</span><h3>Phase 04 — Café & Events</h3><p>A designed café and programmed event space — activating NAD Village as a cultural destination, not just a working studio.</p></div>
+      <div class="fi"><span class="fi-status future">Future</span><h3>Phase 05 — Digital Platform</h3><p>An integrated digital presence — connecting NAD Village's physical work with an online community, store, and content platform.</p></div>
+      <div class="fi"><span class="fi-status future">Future</span><h3>Phase 06 — Stay & Community</h3><p>Homestay accommodation and open community space — completing NAD Village as a place where people can live inside the work.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="nad-cta">
+    <h2>Want to be part of<br>what's being <em>built?</em></h2>
+    <div class="nad-cta-btns">
+      <a class="btn-dark" href="contact.html">Get in Touch</a>
+      <a class="btn-ghost-w" href="urbanpots.html">Visit Urbanpots</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+</body>
+</html>

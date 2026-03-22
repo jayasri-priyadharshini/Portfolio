@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--dark-sage:#4A5C40;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--muted:#8A8278;--gold:#B8942C;--light-sage:#B8C8A8;--off-white:#FAF7F2;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ivory);color:var(--charcoal);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--cream);}::-webkit-scrollbar-thumb{background:var(--terracotta);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.6;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:rgba(244,239,230,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(168,88,64,0.12);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:var(--terracotta);text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:var(--mid);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--terracotta);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(244,239,230,0.98);backdrop-filter:blur(16px);border:1px solid rgba(168,88,64,0.1);min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:var(--terracotta);}
+    .nav-cta{border:1px solid var(--terracotta) !important;color:var(--terracotta) !important;transition:all 0.3s !important;}
+    .nav-cta:hover{background:var(--terracotta) !important;color:#fff !important;}
+
+    /* SHARED UTILITIES */
+    .lbl{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;}
+    .lbl::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;line-height:1.12;color:var(--charcoal);}
+    .h2 em{font-style:italic;color:var(--terracotta);}
+    .btn-t{display:inline-block;padding:0.8rem 2rem;background:var(--terracotta);color:#fff;text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;transition:background 0.3s;}
+    .btn-t:hover{background:var(--rust);}
+    .btn-o{display:inline-block;padding:0.8rem 2rem;border:1px solid var(--terracotta);color:var(--terracotta);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;transition:all 0.3s;}
+    .btn-o:hover{background:var(--terracotta);color:#fff;}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:4.5rem;}
+    .hero-left{background:var(--charcoal);padding:6rem 4rem;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-left-top{}
+    .hero-eyebrow{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:rgba(244,239,230,0.35);margin-bottom:2.5rem;}
+    .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--ivory);line-height:1.05;margin-bottom:1.5rem;}
+    .hero-name em{font-style:italic;color:var(--terracotta);}
+    .hero-roles{display:flex;flex-direction:column;gap:0.3rem;margin-bottom:3rem;}
+    .hero-role-line{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,239,230,0.45);display:flex;align-items:center;gap:0.8rem;}
+    .hero-role-line::before{content:'';width:0.5rem;height:1px;background:var(--terracotta);}
+    .hero-left-bottom{}
+    .hero-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.45);line-height:1.65;border-left:2px solid var(--terracotta);padding-left:1.2rem;}
+
+    .hero-right{background:var(--sage);padding:6rem 4rem;display:flex;flex-direction:column;justify-content:center;gap:2.5rem;}
+    .hero-right-intro{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;color:var(--ivory);line-height:1.65;}
+    .hero-right-intro em{font-style:italic;color:rgba(244,239,230,0.7);}
+    .hero-right-body{font-size:0.88rem;color:rgba(244,239,230,0.65);line-height:1.95;}
+    .hero-right-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-white{display:inline-block;padding:0.8rem 2rem;background:rgba(244,239,230,0.15);border:1px solid rgba(244,239,230,0.35);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;transition:all 0.3s;}
+    .btn-white:hover{background:rgba(244,239,230,0.25);}
+
+    /* PRACTICE AREAS */
+    .practice{padding:6rem 4rem;background:var(--ivory);}
+    .practice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem;}
+    .pc{padding:2.5rem 2rem;border-top:3px solid transparent;transition:border-color 0.3s,opacity 0.3s;text-decoration:none;display:block;color:inherit;}
+    .pc:hover{opacity:0.88;border-top-color:rgba(255,255,255,0.4);}
+    .pc:nth-child(1){background:var(--charcoal);}
+    .pc:nth-child(2){background:var(--sage);}
+    .pc:nth-child(3){background:var(--terracotta);}
+    .pc:nth-child(4){background:var(--rust);}
+    .pc:nth-child(5){background:var(--ink);}
+    .pc:nth-child(6){background:var(--dark-sage);}
+    .pc:nth-child(7){background:var(--gold);}
+    .pc:nth-child(8){background:var(--mid);}
+    .pc-icon{font-size:1.8rem;margin-bottom:1.2rem;display:block;}
+    .pc h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ivory);margin-bottom:0.6rem;}
+    .pc p{font-size:0.78rem;color:rgba(244,239,230,0.65);line-height:1.8;}
+
+    /* FOUNDER BIO */
+    .founder{padding:6rem 4rem;background:var(--cream);display:grid;grid-template-columns:1fr 1.5fr;gap:6rem;align-items:start;}
+    .founder-visual{position:sticky;top:6rem;}
+    .founder-box{width:100%;aspect-ratio:2/3;background:url('images/jayasri-portrait.jpg') center/cover no-repeat;position:relative;overflow:hidden;}
+    .founder-box::after{content:'JP';font-family:'Cormorant Garamond',serif;font-size:12rem;font-weight:300;color:rgba(255,255,255,0.08);position:absolute;bottom:-1rem;right:-1rem;line-height:1;}
+    .founder-tag{position:absolute;bottom:-1.5rem;left:-1.5rem;background:var(--terracotta);color:#fff;padding:1.2rem 1.8rem;}
+    .founder-tag span{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;display:block;}
+    .founder-tag strong{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;}
+    .founder-content{}
+    .founder-content p{font-size:0.9rem;color:var(--mid);line-height:1.95;margin-bottom:1.2rem;}
+    .founder-content p.lead{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--charcoal);line-height:1.6;font-weight:300;}
+    .founder-content p em{font-style:italic;color:var(--terracotta);}
+    .founder-facts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--parchment);}
+    .fact-item{}
+    .fact-label{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--terracotta);margin-bottom:0.3rem;}
+    .fact-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--charcoal);}
+
+    /* VALUES */
+    .values{padding:6rem 0;background:var(--charcoal);}
+    .values-header{padding:0 4rem 3rem;}
+    .values .h2{color:var(--ivory);}
+    .values-row{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;}
+    .val{padding:3rem 2rem;transition:opacity 0.3s;}
+    .val:hover{opacity:0.85;}
+    .val:nth-child(1){background:var(--terracotta);}
+    .val:nth-child(2){background:var(--rust);}
+    .val:nth-child(3){background:var(--sage);}
+    .val:nth-child(4){background:var(--dark-sage);}
+    .val:nth-child(5){background:var(--gold);}
+    .val:nth-child(6){background:var(--mid);}
+    .val-n{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(255,255,255,0.2);line-height:1;margin-bottom:1rem;}
+    .val h3{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--ivory);margin-bottom:0.6rem;}
+    .val p{font-size:0.75rem;color:rgba(255,255,255,0.6);line-height:1.8;}
+
+    /* EDUCATION */
+    .education{padding:6rem 4rem;background:var(--ivory);}
+    .edu-list{margin-top:3rem;}
+    .edu-item{display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:2.2rem 0;border-top:1px solid rgba(90,84,72,0.12);}
+    .edu-item:last-child{border-bottom:1px solid rgba(90,84,72,0.12);}
+    .edu-yr{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--terracotta);padding-top:0.2rem;}
+    .edu-detail h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--charcoal);margin-bottom:0.3rem;}
+    .edu-detail p{font-size:0.83rem;color:var(--mid);line-height:1.8;}
+
+    /* PERSONAL */
+    .personal{padding:6rem 4rem;background:var(--ink);}
+    .personal .h2{color:var(--ivory);}
+    .personal .lbl{color:var(--terracotta);}
+    .personal .lbl::before{background:var(--terracotta);}
+    .personal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:3rem;}
+    .pc2{padding:2.5rem 2rem;transition:opacity 0.3s;}
+    .pc2:hover{opacity:0.85;}
+    .pc2:nth-child(1){background:var(--sage);}
+    .pc2:nth-child(2){background:var(--terracotta);}
+    .pc2:nth-child(3){background:var(--dark-sage);}
+    .pc2:nth-child(4){background:var(--rust);}
+    .pc2-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
+    .pc2 h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);margin-bottom:0.5rem;}
+    .pc2 p{font-size:0.78rem;color:rgba(255,255,255,0.65);line-height:1.8;}
+
+    /* CTA */
+    .about-cta{padding:6rem 4rem;background:var(--terracotta);display:flex;justify-content:space-between;align-items:center;gap:3rem;}
+    .about-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;}
+    .about-cta h2 em{font-style:italic;opacity:0.7;}
+    .about-cta-btns{display:flex;gap:1rem;flex-shrink:0;}
+    .btn-white2{display:inline-block;padding:0.8rem 2rem;border:1px solid rgba(255,255,255,0.5);color:#fff;text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:all 0.3s;}
+    .btn-white2:hover{background:rgba(255,255,255,0.15);}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;}
+    .btn-dark:hover{background:#000;}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .hero-left>*{animation:fadeUp 0.8s ease forwards;opacity:0;}
+    .hero-left>*:nth-child(1){animation-delay:0.1s}.hero-left>*:nth-child(2){animation-delay:0.25s}
+    .hero-right{animation:fadeUp 0.9s 0.3s ease forwards;opacity:0;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links{gap:0;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{grid-template-columns:1fr;}.hero-left,.hero-right{padding:4rem 1.5rem;}
+      .hero-left{min-height:60vh;}
+      .practice{padding:4rem 1.5rem;}.practice-grid{grid-template-columns:repeat(2,1fr);}
+      .founder{grid-template-columns:1fr;padding:4rem 1.5rem;gap:4rem;}.founder-visual{position:static;margin-bottom:3rem;}
+      .values{padding:4rem 0;}.values-header{padding:0 1.5rem 2rem;}.values-row{grid-template-columns:repeat(2,1fr);}
+      .education{padding:4rem 1.5rem;}.edu-item{grid-template-columns:1fr;gap:0.5rem;}
+      .personal{padding:4rem 1.5rem;}.personal-grid{grid-template-columns:repeat(2,1fr);}
+      .about-cta{flex-direction:column;padding:4rem 1.5rem;align-items:flex-start;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active">About</a></li>
+      <li class="nav-dropdown">
+        <a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-left-top">
+        <p class="hero-eyebrow">Pondicherry, India</p>
+        <h1 class="hero-name">Jayasri<br><em>Priyadharshini</em></h1>
+        <div class="hero-roles">
+          <span class="hero-role-line">Spatial Designer</span>
+          <span class="hero-role-line">Material Explorer</span>
+          <span class="hero-role-line">Craft Integrator</span>
+          <span class="hero-role-line">Founder — Urbanpots</span>
+          <span class="hero-role-line">Creator — NAD Village</span>
+        </div>
+      </div>
+      <div class="hero-left-bottom">
+        <p class="hero-quote">Designing spaces, objects, and experiences through material, craft, and context.</p>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-right-intro">I didn't set out to be a designer. I set out to build a plant store — and when no one could see what I was imagining, I picked up the tools and built it myself.</p>
+      <p class="hero-right-body">That first space taught me everything. When the budget collapsed halfway through, I stopped asking what we needed to buy and started asking what we already had. Doors came off their frames. Beams became furniture. The constraint became the design. That question — <em>what's already here?</em> — hasn't left me since.</p>
+      <p class="hero-right-body">Today I work across interiors, landscapes, furniture, lighting, and craft — always material-first, always end-to-end, always with the belief that every space already holds the seed of what it wants to become.</p>
+      <div class="hero-right-btns">
+        <a class="btn-white" href="portfolio.html">View Portfolio</a>
+        <a class="btn-white" href="nad.html">NAD Village</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRACTICE AREAS -->
+  <div class="practice">
+    <div class="section-header">
+      <p class="lbl">Practice Areas</p>
+      <h2 class="h2">What I <em>design</em></h2>
+    </div>
+    <div class="practice-grid">
+      <a class="pc" href="portfolio.html#interiors"><span class="pc-icon">🏛️</span><h3>Interior Spaces</h3><p>Homes, cafés, restaurants, restobars, resorts — concept-driven environments built end-to-end.</p></a>
+      <a class="pc" href="portfolio.html#landscape"><span class="pc-icon">🌿</span><h3>Landscape & Courtyard</h3><p>Outdoor ecosystems integrating plants, stone, wood, and water as living environments.</p></a>
+      <a class="pc" href="portfolio.html#furniture"><span class="pc-icon">🪑</span><h3>Furniture Design</h3><p>Custom and sculptural furniture — designed and built using reclaimed and traditional materials.</p></a>
+      <a class="pc" href="portfolio.html#lighting"><span class="pc-icon">💡</span><h3>Lighting Design</h3><p>Handcrafted lighting systems using brass, wood, natural fibre, and salvaged elements.</p></a>
+      <a class="pc" href="portfolio.html#wallart"><span class="pc-icon">🎨</span><h3>Wall Art & Installations</h3><p>Lippan, Warli, Tanjore, mixed-media relief — craft traditions integrated as spatial narratives.</p></a>
+      <a class="pc" href="portfolio.html#products"><span class="pc-icon">🏺</span><h3>Products & Decor</h3><p>Botanical, handmade, and reclaimed objects designed for everyday life.</p></a>
+      <a class="pc" href="materials.html"><span class="pc-icon">🪵</span><h3>Material Exploration</h3><p>Architectural salvage, old doors, wood slabs, brass, stone — a living material library.</p></a>
+      <a class="pc" href="nad.html"><span class="pc-icon">🌱</span><h3>NAD Village</h3><p>A holistic design ecosystem — studio, workshop, material yard, retail, café, craft labs.</p></a>
+    </div>
+  </div>
+
+  <!-- FOUNDER BIO -->
+  <div class="founder">
+    <div class="founder-visual">
+      <div class="founder-box">
+        <div class="founder-tag">
+          <span>Founder & Creative Director</span>
+          <strong>Urbanpots · Pondicherry · Est. 2020</strong>
+        </div>
+      </div>
+    </div>
+    <div class="founder-content">
+      <div style="margin-bottom:2.5rem;">
+        <p class="lbl">My Story</p>
+        <h2 class="h2">Not trained.<br><em>Built.</em></h2>
+      </div>
+      <p class="lead">I didn't plan this. I wanted a plant store. When no designer could see what I was imagining, I stepped in and built it myself.</p>
+      <p>That first project — converting an old house in Pondicherry into the Urbanpots store — broke the budget halfway through. And that constraint cracked everything open. When we couldn't buy anything new, I started asking what was already there. The doors came off their frames and became walls. The beams became furniture. The old house told us what the store should be.</p>
+      <p>That question — <em>what do we already have?</em> — became the philosophy behind everything that followed.</p>
+      <p>Today, through Urbanpots, I design and execute spaces, furniture, lighting, installations, and landscapes — combining reclaimed materials, traditional Indian craft, and contemporary spatial thinking into environments that feel grounded, true, and long-lasting.</p>
+      <p>BBA in Digital Business & Entrepreneurship from IIM Bangalore gave me the strategic foundation. Five years on-site gave me the real education.</p>
+      <div class="founder-facts">
+        <div class="fact-item"><p class="fact-label">Education</p><p class="fact-val">BBA (DBE), IIM Bangalore</p></div>
+        <div class="fact-item"><p class="fact-label">Based in</p><p class="fact-val">Pondicherry, India</p></div>
+        <div class="fact-item"><p class="fact-label">Active since</p><p class="fact-val">2020 — Present</p></div>
+        <div class="fact-item"><p class="fact-label">Ventures</p><p class="fact-val">Urbanpots · NAD Village</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="values">
+    <div class="values-header">
+      <p class="lbl" style="color:var(--terracotta)">What I Believe</p>
+      <h2 class="h2" style="color:var(--ivory)">The principles behind<br><em>every decision I make</em></h2>
+    </div>
+    <div class="values-row">
+      <div class="val"><div class="val-n">01</div><h3>I re-see before I replace</h3><p>The design is already there — in the material, the history, the bones of the space. I find it before I buy anything new.</p></div>
+      <div class="val"><div class="val-n">02</div><h3>I treat craft as structure</h3><p>Traditional craft is not decoration I apply at the end. It is structural, cultural, and material — and it earns its place by working, not just by being beautiful.</p></div>
+      <div class="val"><div class="val-n">03</div><h3>I let constraints lead</h3><p>Limitation is not the enemy of creativity — it is the engine. My best decisions have come from having no other choice. Scarcity focuses. Pressure reveals.</p></div>
+      <div class="val"><div class="val-n">04</div><h3>I build for truth, not trend</h3><p>A space I design should feel like it could not have been any other way — like it belonged exactly here, in this material, for this person. That is what I am always working towards.</p></div>
+      <div class="val"><div class="val-n">05</div><h3>I stay until it is done</h3><p>I stay on-site. I work hands-on. I take full responsibility from concept to the last finishing coat — because the gap between vision and reality is where most design fails.</p></div>
+      <div class="val"><div class="val-n">06</div><h3>I build ecosystems, not services</h3><p>Urbanpots and NAD Village are not service businesses. They are systems — connecting design, craft, culture, and community into something that grows beyond any single project.</p></div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="education">
+    <p class="lbl">Formation</p>
+    <h2 class="h2">Two kinds of <em>education</em></h2>
+    <div class="edu-list">
+      <div class="edu-item"><p class="edu-yr">BBA · DBE · IIM Bangalore</p><div class="edu-detail"><h3>Indian Institute of Management Bangalore</h3><p>Digital Business & Entrepreneurship — the strategic and systems-thinking foundation that makes Urbanpots more than a studio.</p></div></div>
+      <div class="edu-item"><p class="edu-yr">2020 — Present</p><div class="edu-detail"><h3>On-site with carpenters, artisans & craftsmen</h3><p>Material behaviour. Construction logic. The intelligence embedded in traditional craft. The education no institution offers.</p></div></div>
+      <div class="edu-item"><p class="edu-yr">Ongoing</p><div class="edu-detail"><h3>Material Research & Innovation</h3><p>Reclaimed materials, mixed media systems, finish and texture testing — a self-directed practice in material intelligence.</p></div></div>
+    </div>
+  </div>
+
+  <!-- PERSONAL -->
+  <div class="personal">
+    <p class="lbl">Beyond the Work</p>
+    <h2 class="h2" style="color:var(--ivory);margin-bottom:0;">The person <em>behind</em> the projects</h2>
+    <div class="personal-grid">
+      <div class="pc2"><span class="pc2-icon">📚</span><h4>Avid Reader</h4><p>Books as windows into design philosophy, cultural history, and the quiet patterns that connect everything.</p></div>
+      <div class="pc2"><span class="pc2-icon">✍️</span><h4>Poet</h4><p>Language shaped with the same care as wood, clay, and stone. Words as material.</p></div>
+      <div class="pc2"><span class="pc2-icon">🌱</span><h4>Plant Collector</h4><p>A living archive of green things — each one a conversation between nature, space, and light.</p></div>
+      <div class="pc2"><span class="pc2-icon">♻️</span><h4>Repurposer</h4><p>A deep inclination toward meaning-making from existing things. The philosophy that built everything.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="about-cta">
+    <h2>Ready to see the <em>work?</em></h2>
+    <div class="about-cta-btns">
+      <a class="btn-dark" href="portfolio.html">View Portfolio</a>
+      <a class="btn-white2" href="contact.html">Get in Touch</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+</body>
+</html>

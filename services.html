@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services — Jayasri Priyadharshini</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ivory:#F4EFE6;--cream:#EBE3D5;--parchment:#E0D6C4;--terracotta:#A85840;--rust:#7A3828;--sage:#6E8060;--dark-sage:#4A5C40;--charcoal:#28271F;--ink:#1A1914;--mid:#5A5448;--gold:#B8942C;--light-sage:#B8C8A8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--ink);color:var(--ivory);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--charcoal);}::-webkit-scrollbar-thumb{background:var(--rust);}
+    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+
+    /* NAV — rust */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:var(--rust);border-bottom:1px solid rgba(0,0,0,0.2);}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.16em;color:#fff;text-decoration:none;text-transform:uppercase;}
+    .nav-links{display:flex;gap:0;list-style:none;align-items:center;}
+    .nav-links>li>a{text-decoration:none;color:rgba(255,255,255,0.82);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:400;transition:color 0.3s;padding:0.5rem 0.9rem;display:block;}
+    .nav-links>li>a:hover,.nav-links>li>a.active{color:#fff;}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+    .dropdown{position:absolute;top:100%;left:0;background:rgba(60,20,10,0.98);border:none;min-width:180px;padding:0.5rem 0;list-style:none;opacity:0;pointer-events:none;transform:translateY(-8px);transition:all 0.25s;}
+    .dropdown a{display:block;padding:0.5rem 1.2rem;font-size:0.67rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.75);text-decoration:none;transition:color 0.2s;}
+    .dropdown a:hover{color:#fff;background:rgba(0,0,0,0.15);}
+    .nav-cta{border:1px solid rgba(255,255,255,0.6) !important;color:#fff !important;font-weight:500 !important;}
+    .nav-cta:hover{background:#fff !important;color:var(--rust) !important;}
+
+    /* HERO */
+    .hero{padding:9rem 4rem 6rem;background:var(--charcoal);}
+    .lbl{font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:1.2rem;}
+    .lbl::before{content:'';display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;color:var(--ivory);line-height:1.05;margin-bottom:1.5rem;}
+    .hero h1 em{font-style:italic;color:var(--terracotta);}
+    .hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:rgba(244,239,230,0.4);max-width:600px;line-height:1.65;}
+
+    /* SERVICE CARDS — dark background, palette cards */
+    .services{padding:7rem 4rem;background:var(--ink);}
+    .svc-category{margin-bottom:5rem;}
+    .svc-category:last-child{margin-bottom:0;}
+    .svc-cat-header{display:flex;align-items:baseline;gap:2rem;margin-bottom:2.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(244,239,230,0.08);}
+    .svc-cat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--terracotta);opacity:0.3;line-height:1;}
+    .svc-cat-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--ivory);}
+    .svc-cat-title em{font-style:italic;color:var(--terracotta);}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+    .svc{padding:2rem 1.8rem;transition:opacity 0.3s;}
+    .svc:hover{opacity:0.85;}
+    /* Category 01 — Spatial Design */
+    .svc-category:nth-child(1) .svc:nth-child(1){background:var(--charcoal);}
+    .svc-category:nth-child(1) .svc:nth-child(2){background:var(--sage);}
+    .svc-category:nth-child(1) .svc:nth-child(3){background:var(--dark-sage);}
+    .svc-category:nth-child(1) .svc:nth-child(4){background:var(--terracotta);}
+    .svc-category:nth-child(1) .svc:nth-child(5){background:var(--rust);}
+    .svc-category:nth-child(1) .svc:nth-child(6){background:var(--mid);}
+    /* Category 02 — Objects & Installations */
+    .svc-category:nth-child(2) .svc:nth-child(1){background:var(--rust);}
+    .svc-category:nth-child(2) .svc:nth-child(2){background:var(--gold);}
+    .svc-category:nth-child(2) .svc:nth-child(3){background:var(--ink);}
+    .svc-category:nth-child(2) .svc:nth-child(4){background:var(--terracotta);}
+    .svc-category:nth-child(2) .svc:nth-child(5){background:var(--dark-sage);}
+    .svc-category:nth-child(2) .svc:nth-child(6){background:var(--charcoal);}
+    /* Category 03 — Research & Sourcing */
+    .svc-category:nth-child(3) .svc:nth-child(1){background:var(--sage);}
+    .svc-category:nth-child(3) .svc:nth-child(2){background:var(--charcoal);}
+    .svc-category:nth-child(3) .svc:nth-child(3){background:var(--terracotta);}
+    .svc-icon{font-size:1.4rem;margin-bottom:0.8rem;display:block;}
+    .svc h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--ivory);margin-bottom:0.5rem;}
+    .svc p{font-size:0.78rem;color:rgba(255,255,255,0.6);line-height:1.8;}
+
+    /* PROCESS STEPS — dark background, palette cards */
+    .process{padding:7rem 4rem;background:var(--charcoal);}
+    .process-row{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:3rem;}
+    .pr{padding:2.5rem 1.8rem;position:relative;transition:opacity 0.3s;}
+    .pr:hover{opacity:0.85;}
+    .pr:nth-child(1){background:var(--ink);}
+    .pr:nth-child(2){background:var(--rust);}
+    .pr:nth-child(3){background:var(--terracotta);}
+    .pr:nth-child(4){background:var(--sage);}
+    .pr:nth-child(5){background:var(--dark-sage);}
+    .pr::after{content:'→';position:absolute;right:-0.5rem;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.4);font-size:1rem;z-index:10;}
+    .pr:last-child::after{display:none;}
+    .pr-n{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:rgba(255,255,255,0.15);line-height:1;margin-bottom:0.8rem;}
+    .pr h3{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);margin-bottom:0.5rem;}
+    .pr p{font-size:0.77rem;color:rgba(255,255,255,0.6);line-height:1.8;}
+
+    /* COMMITMENT CARDS — dark background, palette cards */
+    .commitment{padding:7rem 4rem;background:var(--ink);}
+    .commitment h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--ivory);margin-bottom:3rem;}
+    .commitment h2 em{font-style:italic;color:var(--terracotta);}
+    .commit-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+    .cmt{padding:2.5rem 2rem;transition:opacity 0.3s;}
+    .cmt:hover{opacity:0.85;}
+    .cmt:nth-child(1){background:var(--terracotta);}
+    .cmt:nth-child(2){background:var(--sage);}
+    .cmt:nth-child(3){background:var(--rust);}
+    .cmt:nth-child(4){background:var(--dark-sage);}
+    .cmt h3{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--ivory);margin-bottom:0.6rem;}
+    .cmt p{font-size:0.77rem;color:rgba(255,255,255,0.65);line-height:1.8;}
+    .cmt-icon{font-size:1.5rem;margin-bottom:1rem;display:block;}
+
+    /* CTA — rust background */
+    .svc-cta{padding:6rem 4rem;background:var(--rust);display:flex;justify-content:space-between;align-items:center;gap:3rem;}
+    .svc-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#fff;line-height:1.2;}
+    .svc-cta h2 em{font-style:italic;opacity:0.7;}
+    .btn-dark{display:inline-block;padding:0.8rem 2rem;background:var(--ink);color:var(--ivory);text-decoration:none;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;transition:background 0.3s;}
+    .btn-dark:hover{background:#000;}
+
+    footer{background:var(--ink);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,239,230,0.06);}
+    footer p{font-size:0.68rem;letter-spacing:0.1em;color:rgba(244,239,230,0.25);}
+    .fl{font-family:'Cormorant Garamond',serif;font-size:0.95rem;letter-spacing:0.14em;color:rgba(244,239,230,0.3);}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}.nav-links>li>a{padding:0.4rem 0.5rem;font-size:0.6rem;}
+      .hero{padding:7rem 1.5rem 4rem;}
+      .services{padding:4rem 1.5rem;}.svc-grid{grid-template-columns:1fr 1fr;}
+      .process{padding:4rem 1.5rem;}.process-row{grid-template-columns:repeat(3,1fr);}
+      .pr::after{display:none;}
+      .commitment{padding:4rem 1.5rem;}.commit-grid{grid-template-columns:1fr 1fr;}
+      .svc-cta{flex-direction:column;padding:4rem 1.5rem;}
+      footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="index.html">JP</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li class="nav-dropdown"><a href="portfolio.html">Portfolio ▾</a>
+        <ul class="dropdown">
+          <li><a href="portfolio.html#interiors">Interiors</a></li>
+          <li><a href="portfolio.html#landscape">Landscape</a></li>
+          <li><a href="portfolio.html#furniture">Furniture</a></li>
+          <li><a href="portfolio.html#lighting">Lighting</a></li>
+          <li><a href="portfolio.html#wallart">Wall Art</a></li>
+          <li><a href="portfolio.html#products">Products</a></li>
+        </ul>
+      </li>
+      <li><a href="materials.html">Material Library</a></li>
+      <li><a href="urbanpots.html">Urbanpots</a></li>
+      <li><a href="nad.html">NAD Village</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <p class="lbl">Services</p>
+    <h1>Designing Spaces, Objects<br>& <em>Material Experiences</em></h1>
+    <p class="hero-sub">End-to-end design and execution — from initial concept to final delivery, with full material, craft, and execution control throughout.</p>
+  </div>
+
+  <div class="services">
+    <!-- SPATIAL -->
+    <div class="svc-category">
+      <div class="svc-cat-header">
+        <span class="svc-cat-num">01</span>
+        <h2 class="svc-cat-title">Spatial <em>Design</em></h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc"><span class="svc-icon">🏠</span><h3>Interior Design</h3><p>Complete interior design for residential, hospitality, and commercial spaces. Concept, material, execution, handover.</p></div>
+        <div class="svc"><span class="svc-icon">🌿</span><h3>Landscape Design</h3><p>Outdoor ecosystems — gardens, resort landscapes, and site-specific outdoor environments.</p></div>
+        <div class="svc"><span class="svc-icon">🏛️</span><h3>Courtyard Design</h3><p>Transitional spaces — interior courtyards, semi-outdoor zones, and threshold environments.</p></div>
+        <div class="svc"><span class="svc-icon">☕</span><h3>Café Design</h3><p>F&B environments where atmosphere is the primary product. Material-led, concept-driven, functionally sound.</p></div>
+        <div class="svc"><span class="svc-icon">🏨</span><h3>Resort & Homestay Design</h3><p>Hospitality environments that feel genuinely rooted in their location — not interchangeable with every other resort.</p></div>
+        <div class="svc"><span class="svc-icon">🏪</span><h3>Retail Design</h3><p>Retail spaces designed as experiences — where the environment sells the product as much as the product itself.</p></div>
+      </div>
+    </div>
+
+    <!-- OBJECTS -->
+    <div class="svc-category">
+      <div class="svc-cat-header">
+        <span class="svc-cat-num">02</span>
+        <h2 class="svc-cat-title">Objects & <em>Installations</em></h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc"><span class="svc-icon">🪑</span><h3>Custom Furniture</h3><p>Reclaimed, sculptural, and mixed-material furniture — designed and built for its exact context. Never a template.</p></div>
+        <div class="svc"><span class="svc-icon">💡</span><h3>Lighting Design</h3><p>Handcrafted lighting systems using Moradabad brass, reclaimed wood, natural fibre, and salvaged elements.</p></div>
+        <div class="svc"><span class="svc-icon">🎨</span><h3>Wall Installations</h3><p>Lippan relief, Warli murals, Tanjore panels, mixed-media installations — traditional craft as spatial narrative.</p></div>
+        <div class="svc"><span class="svc-icon">🏺</span><h3>Product Design</h3><p>Botanical objects, handmade decor, and reclaimed items designed for everyday life at the Urbanpots scale.</p></div>
+        <div class="svc"><span class="svc-icon">🎪</span><h3>Art Installations</h3><p>Site-specific, commissioned, and rotating art installations for public and private spaces.</p></div>
+        <div class="svc"><span class="svc-icon">✨</span><h3>Styling</h3><p>Final layer styling — objects, plants, lighting adjustment, and material accents that bring a space to life.</p></div>
+      </div>
+    </div>
+
+    <!-- RESEARCH -->
+    <div class="svc-category">
+      <div class="svc-cat-header">
+        <span class="svc-cat-num">03</span>
+        <h2 class="svc-cat-title">Research & <em>Sourcing</em></h2>
+      </div>
+      <div class="svc-grid">
+        <div class="svc"><span class="svc-icon">🪵</span><h3>Material Sourcing</h3><p>Reclaimed, traditional, and natural materials sourced from demolition sites, salvage yards, and artisan clusters across South India.</p></div>
+        <div class="svc"><span class="svc-icon">🤝</span><h3>Craft Integration</h3><p>Identifying and collaborating with the right craftsperson for the right element — matching tradition to context.</p></div>
+        <div class="svc"><span class="svc-icon">🔧</span><h3>AMC Contracts</h3><p>Annual Maintenance Contracts for spaces delivered — plant care, material upkeep, and seasonal refreshes.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="process">
+    <p style="font-size:0.65rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--terracotta);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.8rem;"><span style="display:inline-block;width:1.8rem;height:1px;background:var(--terracotta);"></span>How It Works</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--charcoal);">From <em>first conversation</em><br>to final coat</h2>
+    <div class="process-row">
+      <div class="pr"><div class="pr-n">01</div><h3>Conversation</h3><p>Understanding your space, brief, and vision — before any design begins.</p></div>
+      <div class="pr"><div class="pr-n">02</div><h3>Material Reading</h3><p>What exists. What can be reused. What needs to be sourced. The honest audit.</p></div>
+      <div class="pr"><div class="pr-n">03</div><h3>Concept</h3><p>A clear material and spatial direction — not a mood board, a decision.</p></div>
+      <div class="pr"><div class="pr-n">04</div><h3>Execution</h3><p>On-site. Hands-on. Full coordination from carpentry to craft to finishing.</p></div>
+      <div class="pr"><div class="pr-n">05</div><h3>Handover + AMC</h3><p>A complete space, delivered. And a maintenance plan to keep it alive.</p></div>
+    </div>
+  </div>
+
+  <!-- COMMITMENT -->
+  <div class="commitment">
+    <h2>What every project<br><em>includes</em></h2>
+    <div class="commit-grid">
+      <div class="cmt"><span class="cmt-icon">📐</span><h3>End-to-end delivery</h3><p>Concept through completion. One point of contact, full responsibility throughout.</p></div>
+      <div class="cmt"><span class="cmt-icon">🪵</span><h3>Material intelligence</h3><p>Every material decision backed by sourcing knowledge, structural testing, and honest assessment.</p></div>
+      <div class="cmt"><span class="cmt-icon">🤝</span><h3>Artisan coordination</h3><p>Direct work with craftspeople — not through intermediaries, not from catalogues.</p></div>
+      <div class="cmt"><span class="cmt-icon">♻️</span><h3>Sustainability by default</h3><p>Reclaimed first. New only when necessary. Waste closed at every stage.</p></div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="svc-cta">
+    <h2>Ready to start a <em>project?</em></h2>
+    <a class="btn-dark" href="contact.html">Get in Touch →</a>
+  </div>
+
+  <footer>
+    <p>© 2025 Jayasri Priyadharshini</p>
+    <p class="fl">URBANPOTS · NAD VILLAGE</p>
+    <p>Pondicherry, India</p>
+  </footer>
+</body>
+</html>
